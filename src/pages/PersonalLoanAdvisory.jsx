@@ -93,7 +93,7 @@ const PersonalLoanAdvisory = () => {
       {/* ----------------------------------------------------
          1. HERO BANNER & QUICK ENQUIRY FORM
       ---------------------------------------------------- */}
-      <section className="pla-hero-section reveal-on-scroll">
+      <section className="pla-hero-section">
         <Container>
           <div className="pla-hero-grid">
             {/* Left: Head Banner */}

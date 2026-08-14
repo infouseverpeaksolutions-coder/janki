@@ -101,20 +101,20 @@
 }
 
 .wf-hero-content h1 {
-  font-size: 52px;
+  font-size: 36px;
   font-weight: 800;
   color: #0D2447;
   margin-bottom: 8px;
-  line-height: 1.15;
-  letter-spacing: -1px;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
 }
 
 .wf-hero-tagline {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: rgba(162, 123, 44, 0.95);
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+  letter-spacing: 0.3px;
 }
 
 .wf-hero-desc {
