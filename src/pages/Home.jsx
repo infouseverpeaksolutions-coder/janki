@@ -75,7 +75,7 @@ const Home = () => {
       {/* ----------------------------------------------------
          1. HERO SECTION (About Us, Vision. Mission. Values.)
       ---------------------------------------------------- */}
-      <section className="wf-hero-section reveal-on-scroll">
+      <section className="wf-hero-section">
         <Container>
           <div className="wf-hero-grid">
             <div className="wf-hero-content reveal-on-scroll stagger-delay-1">
@@ -110,32 +110,12 @@ const Home = () => {
             </div>
 
             <div className="wf-hero-visual reveal-on-scroll stagger-delay-2">
-              <div className="hero-arch-portal-wrapper">
-                <div className="hero-arch-portal" onClick={() => handleOpenApply("Financial Advisory Doorway")}>
-                  {/* Arch Door Background Image */}
-                  <img
-                    src="/images/hero_arch_door.png"
-                    alt="Arch Door Financial Gateway"
-                    className="arch-background-img"
-                  />
-
-                  {/* Inner Chamber viewed through the Open Door */}
-                  <div className="arch-inner-chamber">
-                    <img
-                      src="/logo.jpeg"
-                      alt="Janki Financial Services Logo"
-                      className="arch-logo-img"
-                    />
-                    <div className="arch-chamber-tag">
-                      JANKI
-                      <span>FINANCIAL SERVICES</span>
-                    </div>
-                  </div>
-
-                  {/* 3D Open Door Panels */}
-                  <div className="arch-door-left"></div>
-                  <div className="arch-door-right"></div>
-                </div>
+              <div className="wf-banner-card">
+                <img
+                  src="/images/arch_door_open_logo.png"
+                  alt="Financial Gateway Open Door Logo"
+                  className="wf-banner-img"
+                />
               </div>
             </div>
           </div>
