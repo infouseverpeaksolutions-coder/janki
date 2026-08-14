@@ -49,8 +49,16 @@ const EligibilityModal = ({ isOpen, onClose, initialMobile = "", initialLoanType
             <img src="/logo.jpeg" alt="JANKI Logo" className="modal-logo-img" />
           </div>
           <div>
-            <h3>Check Instant Loan Eligibility</h3>
-            <p className="modal-subtitle">100% Free & No Credit Score Impact</p>
+            <h3>
+              {initialLoanType.toLowerCase().includes("advisory") || initialLoanType.toLowerCase().includes("consultation") || initialLoanType.toLowerCase().includes("contact")
+                ? "Financial Advisory Consultation"
+                : `Check ${initialLoanType} Eligibility`}
+            </h3>
+            <p className="modal-subtitle">
+              {initialLoanType.toLowerCase().includes("advisory") || initialLoanType.toLowerCase().includes("consultation") || initialLoanType.toLowerCase().includes("contact")
+                ? "Get 1-on-1 expert guidance for loans, debt structuring & wealth planning"
+                : "100% Free & No Credit Score Impact"}
+            </p>
           </div>
         </div>
 

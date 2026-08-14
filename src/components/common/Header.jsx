@@ -55,7 +55,7 @@ const Header = ({ onOpenApply }) => {
 
           <nav className={`navigation ${mobileMenuOpen ? "mobile-active" : ""}`}>
             <NavLink
-              to="/personal-loan"
+              to="/home"
               className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
               onClick={closeMenus}
             >
@@ -85,11 +85,18 @@ const Header = ({ onOpenApply }) => {
               {loansDropdownOpen && (
                 <div className="dropdown-menu">
                   <NavLink
-                    to="/personal-loan"
+                    to="/personal-loan-advisory"
                     className="dropdown-item highlighted"
                     onClick={closeMenus}
                   >
-                    <span className="dot">●</span> Personal Loan <span className="badge-tag">Popular</span>
+                    <span className="dot">●</span> Personal Loan Advisory <span className="badge-tag">New</span>
+                  </NavLink>
+                  <NavLink
+                    to="/personal-loan"
+                    className="dropdown-item"
+                    onClick={closeMenus}
+                  >
+                    Personal Loan
                   </NavLink>
                   <NavLink
                     to="/personal-loan#loan-categories"

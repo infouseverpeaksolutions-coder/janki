@@ -6,6 +6,7 @@ import Footer from "./components/common/Footer";
 
 import Home from "./pages/Home";
 import PersonalLoan from "./pages/PersonalLoan";
+import PersonalLoanAdvisory from "./pages/PersonalLoanAdvisory";
 import Services from "./pages/Services";
 import LoanDetails from "./pages/LoanDetails";
 import Apply from "./pages/Apply";
@@ -23,7 +24,9 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<PersonalLoan />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/personal-loan" element={<PersonalLoan />} />
+          <Route path="/personal-loan-advisory" element={<PersonalLoanAdvisory />} />
           <Route path="/services" element={<Services />} />
           <Route path="/loan-details" element={<LoanDetails />} />
           <Route path="/apply" element={<Apply />} />
