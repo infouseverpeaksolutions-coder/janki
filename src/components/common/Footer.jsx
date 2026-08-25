@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail, Clock, ShieldCheck, Handshake, Award, Headphones } from "lucide-react";
 import Container from "./Container";
 import "../../styles/common/footer.css";
 
@@ -93,6 +93,29 @@ const Footer = () => {
                 <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Trust Pillars Bar (4 Icons & Text) */}
+        <div className="footer-trust-pillars">
+          <div className="trust-pillar-item">
+            <ShieldCheck size={30} className="pillar-icon" />
+            <span className="pillar-text">TRUSTED</span>
+          </div>
+          <div className="pillar-divider"></div>
+          <div className="trust-pillar-item">
+            <Handshake size={30} className="pillar-icon" />
+            <span className="pillar-text">TRANSPARENT</span>
+          </div>
+          <div className="pillar-divider"></div>
+          <div className="trust-pillar-item">
+            <Award size={30} className="pillar-icon" />
+            <span className="pillar-text">RELIABLE</span>
+          </div>
+          <div className="pillar-divider"></div>
+          <div className="trust-pillar-item">
+            <Headphones size={30} className="pillar-icon" />
+            <span className="pillar-text">CUSTOMER FOCUSED</span>
           </div>
         </div>
 

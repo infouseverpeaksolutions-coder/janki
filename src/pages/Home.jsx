@@ -15,17 +15,26 @@ import {
   Award,
   Sparkles,
   ChevronRight,
-  BookOpen
+  BookOpen,
+  Users
 } from "lucide-react";
 
 import Container from "../components/common/Container";
 import EligibilityModal from "../components/personal-loan/EligibilityModal";
+import HowItWorks from "../components/personal-loan/HowItWorks";
+import WhyChooseJanki from "../components/personal-loan/WhyChooseJanki";
+import TestimonialsSection from "../components/personal-loan/TestimonialsSection";
+import EMICalculatorSection from "../components/personal-loan/EMICalculatorSection";
+import FAQSection from "../components/personal-loan/FAQSection";
+
 import "../styles/home-wireframe.css";
+import "../styles/personal-loan.css";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("VISION");
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLoanType, setSelectedLoanType] = useState("Personal Loan");
+  const [heroMobile, setHeroMobile] = useState("");
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: "",
@@ -62,6 +71,11 @@ const Home = () => {
     setModalOpen(true);
   };
 
+  const handleSpeakToAdvisory = (e) => {
+    if (e) e.preventDefault();
+    handleOpenApply("Financial Advisory Consultation");
+  };
+
   const handleContactSubmit = (e) => {
     e.preventDefault();
     setContactSubmitted(true);
@@ -73,49 +87,221 @@ const Home = () => {
   return (
     <div className="home-wireframe-page">
       {/* ----------------------------------------------------
-         1. HERO SECTION (About Us, Vision. Mission. Values.)
+         1. HERO SECTION (Central Logo Orbit & Dynamic Moving Loan Nodes)
       ---------------------------------------------------- */}
       <section className="wf-hero-section">
         <Container>
           <div className="wf-hero-grid">
+            {/* Left Content Column */}
             <div className="wf-hero-content reveal-on-scroll stagger-delay-1">
-              <h1>Smart Financial & Loan Advisory,</h1>
-              <p className="wf-hero-tagline">Strategic Guidance. Custom Loans. Total Security.</p>
+              <div className="hero-pill-badge">
+                <Users size={16} className="hero-pill-icon" />
+                <span>ADVISORY THAT PUTS YOU FIRST</span>
+              </div>
+
+              <h1 className="hero-main-title">
+                Your Goals.
+                <br />
+                <span className="gold-highlight">Our Advice.</span>
+                <br />
+                <span className="navy-highlight">The Right Loan.</span>
+              </h1>
+
               <p className="wf-hero-desc">
-                Welcome to Janki Financial Services. We are dedicated to delivering strategic financial advisory, competitive loan structuring, and complete wealth protection to help you achieve financial independence.
+                We are a loan advisory firm that compares multiple options from 20+ trusted lenders to find the best fit for you.
               </p>
 
+              {/* 4 Feature Badges */}
+              <div className="hero-features-grid">
+                <div className="hero-feature-item">
+                  <ShieldCheck size={18} className="feat-icon" />
+                  <span>100% Independent Advice</span>
+                </div>
+                <div className="hero-feature-item">
+                  <FileText size={18} className="feat-icon" />
+                  <span>Compare Multiple Lenders</span>
+                </div>
+                <div className="hero-feature-item">
+                  <User size={18} className="feat-icon" />
+                  <span>Expert Guidance Every Step</span>
+                </div>
+                <div className="hero-feature-item">
+                  <ShieldCheck size={18} className="feat-icon" />
+                  <span>Transparent & Secure Process</span>
+                </div>
+              </div>
+
+              {/* Speak to Advisory Button */}
               <button
-                className="wf-contact-btn"
+                type="button"
+                className="speak-advisory-primary-btn"
                 onClick={() => handleOpenApply("Financial Advisory Consultation")}
               >
-                <span>CONTACT US</span>
+                <span>Speak to Advisory</span>
                 <ArrowRight size={18} />
               </button>
 
-              <div className="wf-hero-stats">
-                <div className="stat-item">
-                  <h3>₹500Cr+</h3>
-                  <p>Loans Disbursed</p>
+              {/* Trust Rating Bar */}
+              <div className="hero-trust-bar">
+                <div className="avatar-stack">
+                  <img src="/images/customer_priya.png" alt="Happy Customer 1" className="avatar-img" />
+                  <img src="/images/customer_rahul.png" alt="Happy Customer 2" className="avatar-img" />
+                  <img src="/images/customer_amit.png" alt="Happy Customer 3" className="avatar-img" />
                 </div>
-                <div className="stat-item">
-                  <h3>10,000+</h3>
-                  <p>Happy Clients</p>
-                </div>
-                <div className="stat-item">
-                  <h3>4.9★</h3>
-                  <p>Client Rating</p>
+                <div className="trust-text-group">
+                  <span className="trust-text">Trusted by 10,000+ Happy Customers</span>
+                  <div className="trust-stars">
+                    <span className="stars-gold">★★★★★</span>
+                    <span className="rating-score">4.8/5</span>
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* Right Column: Central Logo & 6 Floating Service Nodes */}
             <div className="wf-hero-visual reveal-on-scroll stagger-delay-2">
-              <div className="wf-banner-card">
-                <img
-                  src="/images/arch_door_open_logo.png"
-                  alt="Financial Gateway Open Door Logo"
-                  className="wf-banner-img"
-                />
+              <div className="hero-orbit-container">
+                <div className="orbit-glow-bg"></div>
+
+                {/* SVG Orbit Lines & Spokes */}
+                <svg className="orbit-ring-svg" viewBox="0 0 500 500">
+                  <circle cx="250" cy="250" r="190" className="orbit-circle-line" />
+                  <circle cx="250" cy="250" r="135" className="orbit-inner-line" />
+                  <line x1="250" y1="250" x2="250" y2="60" className="orbit-spoke" />
+                  <line x1="250" y1="250" x2="415" y2="155" className="orbit-spoke" />
+                  <line x1="250" y1="250" x2="415" y2="345" className="orbit-spoke" />
+                  <line x1="250" y1="250" x2="250" y2="440" className="orbit-spoke" />
+                  <line x1="250" y1="250" x2="85" y2="345" className="orbit-spoke" />
+                  <line x1="250" y1="250" x2="85" y2="155" className="orbit-spoke" />
+                </svg>
+
+                {/* Center Logo Hub */}
+                <div className="orbit-center-hub">
+                  <div className="hub-inner-ring">
+                    <svg width="76" height="48" viewBox="0 0 120 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M 38 18 L 48 18 L 48 42 C 48 49 43 54 35 54 C 29 54 24 50 23 45 L 30 43 C 31 46 33 48 36 48 C 40 48 42 45 42 42 L 42 18 Z" fill="#0D2447" />
+                      <path d="M 52 18 L 74 18 L 74 24 L 59 24 L 59 32 L 71 32 L 71 38 L 59 38 L 59 53 L 52 53 Z" fill="#0D2447" />
+                      <path d="M 28 40 Q 52 24 78 12 M 78 12 L 67 14 M 78 12 L 76 23" stroke="url(#goldGradientHub)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                      <defs>
+                        <linearGradient id="goldGradientHub" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#D4AF37" />
+                          <stop offset="100%" stopColor="#8A6208" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <h2 className="hub-title">JANKI</h2>
+                    <span className="hub-subtitle">FINANCIAL SERVICES</span>
+                    <div className="hub-gold-divider"></div>
+                    <p className="hub-motto">
+                      Independent Advice.
+                      <br />
+                      <span className="hub-motto-sub">Better Choices.</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* 6 Orbiting Service Nodes with floating animation */}
+                {/* Node 1: Personal Loan */}
+                <div
+                  className="orbit-node node-top"
+                  onClick={() => handleOpenApply("Personal Loan")}
+                  title="Click for Personal Loan Advisory"
+                >
+                  <div className="node-card">
+                    <div className="node-icon-wrapper">
+                      <img src="/images/node_personal_loan.png" alt="Personal Loan" className="node-img" />
+                    </div>
+                    <div className="node-text">
+                      <h4>PERSONAL LOAN</h4>
+                      <p>For your immediate financial needs</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Node 2: Home Loan */}
+                <div
+                  className="orbit-node node-top-right"
+                  onClick={() => handleOpenApply("Home Loan")}
+                  title="Click for Home Loan Advisory"
+                >
+                  <div className="node-card">
+                    <div className="node-icon-wrapper">
+                      <img src="/images/node_home_loan.png" alt="Home Loan" className="node-img" />
+                    </div>
+                    <div className="node-text">
+                      <h4>HOME LOAN</h4>
+                      <p>Make your dream home a reality</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Node 3: Car Loan */}
+                <div
+                  className="orbit-node node-bottom-right"
+                  onClick={() => handleOpenApply("Car Loan")}
+                  title="Click for Car Loan Advisory"
+                >
+                  <div className="node-card">
+                    <div className="node-icon-wrapper">
+                      <img src="/images/node_car_loan.png" alt="Car Loan" className="node-img" />
+                    </div>
+                    <div className="node-text">
+                      <h4>CAR LOAN</h4>
+                      <p>Drive your dreams with ease</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Node 4: Gold Loan */}
+                <div
+                  className="orbit-node node-bottom"
+                  onClick={() => handleOpenApply("Gold Loan")}
+                  title="Click for Gold Loan Advisory"
+                >
+                  <div className="node-card">
+                    <div className="node-icon-wrapper">
+                      <img src="/images/node_gold_loan.png" alt="Gold Loan" className="node-img" />
+                    </div>
+                    <div className="node-text">
+                      <h4>GOLD LOAN</h4>
+                      <p>Unlock the value of your gold</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Node 5: Loan Against Property */}
+                <div
+                  className="orbit-node node-bottom-left"
+                  onClick={() => handleOpenApply("Loan Against Property")}
+                  title="Click for Property Loan Advisory"
+                >
+                  <div className="node-card">
+                    <div className="node-icon-wrapper">
+                      <img src="/images/node_property_loan.png" alt="Loan Against Property" className="node-img" />
+                    </div>
+                    <div className="node-text">
+                      <h4>LOAN AGAINST PROPERTY</h4>
+                      <p>Leverage property for needs</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Node 6: Business Loan */}
+                <div
+                  className="orbit-node node-top-left"
+                  onClick={() => handleOpenApply("Business Loan")}
+                  title="Click for Business Loan Advisory"
+                >
+                  <div className="node-card">
+                    <div className="node-icon-wrapper">
+                      <img src="/images/node_business_loan.png" alt="Business Loan" className="node-img" />
+                    </div>
+                    <div className="node-text">
+                      <h4>BUSINESS LOAN</h4>
+                      <p>Fuel your business growth</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -256,7 +442,6 @@ const Home = () => {
           <div className="wf-services-grid">
             {/* ① Personal Loan Advisory */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-1">
-              <div className="num-circle">①</div>
               <div className="wf-service-icon">
                 <User size={24} />
               </div>
@@ -272,7 +457,6 @@ const Home = () => {
 
             {/* ② Business & MSME Loans */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-2">
-              <div className="num-circle">②</div>
               <div className="wf-service-icon">
                 <Building2 size={24} />
               </div>
@@ -288,7 +472,6 @@ const Home = () => {
 
             {/* ③ Home Loans & Balance Transfers */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-3">
-              <div className="num-circle">③</div>
               <div className="wf-service-icon">
                 <HomeIcon size={24} />
               </div>
@@ -304,7 +487,6 @@ const Home = () => {
 
             {/* ④ Loan Against Property (LAP) */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-4">
-              <div className="num-circle">④</div>
               <div className="wf-service-icon">
                 <Landmark size={24} />
               </div>
@@ -320,7 +502,6 @@ const Home = () => {
 
             {/* ⑤ Credit Card & Debt Structuring */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-5">
-              <div className="num-circle">⑤</div>
               <div className="wf-service-icon">
                 <CreditCard size={24} />
               </div>
@@ -334,19 +515,18 @@ const Home = () => {
               </div>
             </div>
 
-            {/* ⑥ Insurance & Risk Protection */}
-            <div className="wf-service-col reveal-on-scroll stagger-delay-6">
-              <div className="num-circle">⑥</div>
-              <div className="wf-service-icon">
-                <ShieldCheck size={24} />
+            {/* ⑥ Explore More Services (Advisory CTA) */}
+            <div className="wf-service-col explore-service-col reveal-on-scroll stagger-delay-6">
+              <div className="wf-service-icon explore-icon">
+                <Sparkles size={24} />
               </div>
-              <h4>Insurance & Risk Protection</h4>
-              <p>Health, term life & keyman insurance policy customization.</p>
+              <h4>Explore More Advisory</h4>
+              <p>Compare 20+ personalized loan advisory solutions & custom financial plans.</p>
               <div
-                className="wf-service-link"
-                onClick={() => handleOpenApply("Insurance Protection")}
+                className="wf-service-link explore-link"
+                onClick={() => handleOpenApply("Explore All Advisory Services")}
               >
-                <span>Learn More</span> <ChevronRight size={14} />
+                <span>Explore More</span> <ArrowRight size={14} />
               </div>
             </div>
           </div>
@@ -354,7 +534,7 @@ const Home = () => {
       </section>
 
       {/* ----------------------------------------------------
-         4. LOAN & INSURANCE PRODUCTS (5 Box Bracket Cards)
+         4. LOAN & INSURANCE PRODUCTS (5 Box Cards + Explore More)
       ---------------------------------------------------- */}
       <section className="wf-products-section reveal-on-scroll">
         <Container>
@@ -370,11 +550,11 @@ const Home = () => {
           </div>
 
           <div className="wf-products-grid">
-            {/* Card ① */}
+            {/* Card 1 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-1">
               <div className="wf-card-header">
                 <h3>Loan Category</h3>
-                <div className="num-circle">①</div>
+                <Landmark size={20} className="card-header-icon" />
               </div>
               <ul className="wf-item-list">
                 <li>
@@ -394,22 +574,8 @@ const Home = () => {
                 <li>
                   <CheckCircle2 size={16} />
                   <div className="wf-item-text">
-                    <strong>LAP: Property Loans</strong>
-                    <span>High LTV Value</span>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  <div className="wf-item-text">
                     <strong>HL: Home Loans</strong>
                     <span>Lowest Interest ROI</span>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  <div className="wf-item-text">
-                    <strong>CL: Car & Commercial</strong>
-                    <span>Flexible Tenure</span>
                   </div>
                 </li>
               </ul>
@@ -422,11 +588,11 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card ② */}
+            {/* Card 2 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-2">
               <div className="wf-card-header">
                 <h3>Insurance Portfolio</h3>
-                <div className="num-circle">②</div>
+                <ShieldCheck size={20} className="card-header-icon" />
               </div>
               <ul className="wf-item-list">
                 <li>
@@ -460,11 +626,11 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card ③ */}
+            {/* Card 3 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-3">
               <div className="wf-card-header">
                 <h3>Loan & Wealth Shield</h3>
-                <div className="num-circle">③</div>
+                <TrendingUp size={20} className="card-header-icon" />
               </div>
               <ul className="wf-item-list">
                 <li>
@@ -498,11 +664,11 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card ④ */}
+            {/* Card 4 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-4">
               <div className="wf-card-header">
                 <h3>Loan Insurance</h3>
-                <div className="num-circle">④</div>
+                <Award size={20} className="card-header-icon" />
               </div>
               <ul className="wf-item-list">
                 <li>
@@ -519,6 +685,13 @@ const Home = () => {
                     <span>Debt Protection Plan</span>
                   </div>
                 </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Asset Shield</strong>
+                    <span>Property & Life Backed</span>
+                  </div>
+                </li>
               </ul>
               <button
                 className="wf-card-action-btn"
@@ -529,44 +702,319 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card ⑤ */}
-            <div className="wf-bracket-card reveal-on-scroll stagger-delay-5">
-              <div className="wf-card-header">
-                <h3>Wealth Management</h3>
-                <div className="num-circle">⑤</div>
+            {/* Card 5: Explore More Card */}
+            <div className="wf-bracket-card explore-card-highlight reveal-on-scroll stagger-delay-5">
+              <div className="explore-card-inner">
+                <div className="explore-sparkle-badge">
+                  <Sparkles size={24} />
+                </div>
+                <h3>Explore More</h3>
+                <p>Compare 20+ trusted bank loan rates, insurance plans & customized wealth growth tools.</p>
+                <button
+                  className="wf-card-action-btn explore-card-btn"
+                  onClick={() => handleOpenApply("Explore All Products & Advisory")}
+                >
+                  <span>Explore More</span>
+                  <ArrowRight size={14} />
+                </button>
               </div>
-              <ul className="wf-item-list">
-                <li>
-                  <CheckCircle2 size={16} />
-                  <div className="wf-item-text">
-                    <strong>High Yield</strong>
-                    <span>Investment Strategies</span>
-                  </div>
-                </li>
-                <li>
-                  <CheckCircle2 size={16} />
-                  <div className="wf-item-text">
-                    <strong>Financial Growth</strong>
-                    <span>Wealth Freedom Plan</span>
-                  </div>
-                </li>
-              </ul>
-              <button
-                className="wf-card-action-btn"
-                onClick={() => handleOpenApply("Wealth Management Advisory")}
-              >
-                <span>Consult Wealth Expert</span>
-                <ArrowRight size={14} />
-              </button>
             </div>
           </div>
         </Container>
       </section>
 
       {/* ----------------------------------------------------
+         4.5 WEALTH MANAGEMENT SECTION (Cards + Explore More)
+      ---------------------------------------------------- */}
+      <section className="wf-wealth-section reveal-on-scroll">
+        <Container>
+          <div className="section-wireframe-title reveal-on-scroll">
+            <div>
+              <span className="pill-tag">WEALTH & INVESTMENTS</span>
+              <h2>Wealth Management :- Plan & Grow.</h2>
+            </div>
+            <div className="title-sub-arrow">
+              <span>Mutual Funds. → SIPs & Assets</span>
+              <ArrowRight size={18} />
+            </div>
+          </div>
+
+          <div className="wf-products-grid">
+            {/* Wealth Card 1 */}
+            <div className="wf-bracket-card reveal-on-scroll stagger-delay-1">
+              <div className="wf-card-header">
+                <h3>Mutual Funds & SIP</h3>
+                <TrendingUp size={20} className="card-header-icon" />
+              </div>
+              <ul className="wf-item-list">
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>SIP Investments</strong>
+                    <span>Systematic Monthly Growth</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Equity Portfolios</strong>
+                    <span>High Return Funds</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Debt & Hybrid Funds</strong>
+                    <span>Low Risk Stability</span>
+                  </div>
+                </li>
+              </ul>
+              <button
+                className="wf-card-action-btn"
+                onClick={() => handleOpenApply("Mutual Funds & SIP Plan")}
+              >
+                <span>Start SIP Plan</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+
+            {/* Wealth Card 2 */}
+            <div className="wf-bracket-card reveal-on-scroll stagger-delay-2">
+              <div className="wf-card-header">
+                <h3>Portfolio Management</h3>
+                <Landmark size={20} className="card-header-icon" />
+              </div>
+              <ul className="wf-item-list">
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Asset Allocation</strong>
+                    <span>Balanced Risk Strategy</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>HNI Advisory</strong>
+                    <span>Tailored Wealth Freedom</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Goal Based Plans</strong>
+                    <span>Retirement & Family</span>
+                  </div>
+                </li>
+              </ul>
+              <button
+                className="wf-card-action-btn"
+                onClick={() => handleOpenApply("Portfolio Management Advisory")}
+              >
+                <span>Consult Portfolio Expert</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+
+            {/* Wealth Card 3 */}
+            <div className="wf-bracket-card reveal-on-scroll stagger-delay-3">
+              <div className="wf-card-header">
+                <h3>Fixed Income & Bonds</h3>
+                <Award size={20} className="card-header-icon" />
+              </div>
+              <ul className="wf-item-list">
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Corporate FDs</strong>
+                    <span>High Interest Yields</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Sovereign Gold Bonds</strong>
+                    <span>RBI Backed Security</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Tax Free Bonds</strong>
+                    <span>Guaranteed Annual Payouts</span>
+                  </div>
+                </li>
+              </ul>
+              <button
+                className="wf-card-action-btn"
+                onClick={() => handleOpenApply("Fixed Income & Bonds")}
+              >
+                <span>Explore Bonds</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+
+            {/* Wealth Card 4 */}
+            <div className="wf-bracket-card reveal-on-scroll stagger-delay-4">
+              <div className="wf-card-header">
+                <h3>Tax Saving & Security</h3>
+                <ShieldCheck size={20} className="card-header-icon" />
+              </div>
+              <ul className="wf-item-list">
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>ELSS Funds</strong>
+                    <span>Tax Savings Sec 80C</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>ULIP Wealth Shield</strong>
+                    <span>Growth + Life Cover</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle2 size={16} />
+                  <div className="wf-item-text">
+                    <strong>Capital Gain Bonds</strong>
+                    <span>Sec 54EC Tax Exemption</span>
+                  </div>
+                </li>
+              </ul>
+              <button
+                className="wf-card-action-btn"
+                onClick={() => handleOpenApply("Tax Saving Wealth Strategy")}
+              >
+                <span>Save Taxes Now</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+
+            {/* Wealth Card 5: Explore More Card */}
+            <div className="wf-bracket-card explore-card-highlight reveal-on-scroll stagger-delay-5">
+              <div className="explore-card-inner">
+                <div className="explore-sparkle-badge">
+                  <Sparkles size={24} />
+                </div>
+                <h3>Explore More</h3>
+                <p>Discover 15+ high-yielding investment plans, wealth growth tools & customized tax-saving solutions.</p>
+                <button
+                  className="wf-card-action-btn explore-card-btn"
+                  onClick={() => handleOpenApply("Explore All Wealth Management Services")}
+                >
+                  <span>Explore More</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ----------------------------------------------------
+         4.1 HOW IT WORKS (Copied & Synced)
+      ---------------------------------------------------- */}
+      <HowItWorks onStartApplication={handleOpenApply} />
+
+      {/* ----------------------------------------------------
+         4.2 WHY CHOOSE JANKI (Copied & Synced)
+      ---------------------------------------------------- */}
+      <WhyChooseJanki />
+
+      {/* ----------------------------------------------------
+         4.5 1-ON-1 STRATEGY SESSION BANNER
+      ---------------------------------------------------- */}
+      <section className="wf-strategy-section reveal-on-scroll">
+        <Container>
+          <div className="strategy-card-wrapper">
+            <div className="strategy-grid">
+              {/* Left Content */}
+              <div className="strategy-left-content">
+                <span className="strategy-pill-tag">1-ON-1 STRATEGY SESSION</span>
+                <h2>Get direct access to a senior financial strategist.</h2>
+
+                <div className="strategy-features-grid">
+                  <div className="strategy-feature-item">
+                    <CheckCircle2 size={18} className="strategy-check-icon" />
+                    <span>Complete profile & CIBIL evaluation</span>
+                  </div>
+                  <div className="strategy-feature-item">
+                    <CheckCircle2 size={18} className="strategy-check-icon" />
+                    <span>Multi-bank rate comparison</span>
+                  </div>
+                  <div className="strategy-feature-item">
+                    <CheckCircle2 size={18} className="strategy-check-icon" />
+                    <span>Eligibility & document assessment</span>
+                  </div>
+                  <div className="strategy-feature-item">
+                    <CheckCircle2 size={18} className="strategy-check-icon" />
+                    <span>Custom written action plan</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Booking Card */}
+              <div className="strategy-right-card">
+                <div className="fee-header">
+                  <span className="fee-label">Consultation Fee</span>
+                  <div className="fee-amount-box">
+                    <span className="currency-symbol">₹</span>
+                    <span className="fee-price">1,500</span>
+                    <span className="session-duration">/ 45-min session</span>
+                  </div>
+                </div>
+
+                <div className="strategy-divider"></div>
+
+                <ul className="strategy-perks-list">
+                  <li>
+                    <CheckCircle2 size={16} className="perk-check" />
+                    <span>Video or in-office session</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={16} className="perk-check" />
+                    <span>Written summary emailed</span>
+                  </li>
+                  <li>
+                    <CheckCircle2 size={16} className="perk-check" />
+                    <span>No obligation to engage further</span>
+                  </li>
+                </ul>
+
+                <button
+                  className="strategy-book-btn"
+                  onClick={() => handleOpenApply("1-on-1 Financial Strategy Session")}
+                >
+                  <span>Speak with Advisory</span>
+                  <ArrowRight size={18} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ----------------------------------------------------
+         4.6 PLAN BETTER WITH OUR EMI CALCULATOR (Custom Inputs)
+      ---------------------------------------------------- */}
+      <EMICalculatorSection onApplyWithParams={handleOpenApply} />
+
+      {/* ----------------------------------------------------
+         4.7 TRUSTED BY THOUSANDS OF HAPPY CUSTOMERS
+      ---------------------------------------------------- */}
+      <TestimonialsSection />
+
+      {/* ----------------------------------------------------
+         4.8 FREQUENTLY ASKED QUESTIONS (2-Column Desktop Grid)
+      ---------------------------------------------------- */}
+      <FAQSection />
+
+      {/* ----------------------------------------------------
          5. CONTACT US SECTION
       ---------------------------------------------------- */}
-      <section className="wf-contact-section reveal-on-scroll" id="contact">
+      {/* <section className="wf-contact-section reveal-on-scroll" id="contact">
         <Container>
           <div className="wf-contact-card-box reveal-on-scroll">
             <div className="section-wireframe-title" style={{ marginBottom: "12px" }}>
@@ -637,7 +1085,7 @@ const Home = () => {
             )}
           </div>
         </Container>
-      </section>
+      </section> */}
 
       {/* ----------------------------------------------------
          6. RESOURCES & NEWS BANNER
@@ -741,6 +1189,7 @@ const Home = () => {
       <EligibilityModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
+        initialMobile={heroMobile}
         initialLoanType={selectedLoanType}
       />
     </div>

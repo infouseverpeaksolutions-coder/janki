@@ -85,110 +85,455 @@
 }
 
 /* ----------------------------------------------------
-   1. HERO SECTION (About Us, Vision. Mission. Values.)
+   1. HERO SECTION REDESIGN (Reference Image Theme & Moving Orbit Nodes)
 ---------------------------------------------------- */
 .wf-hero-section {
-  padding: 40px 0 70px;
-  background: radial-gradient(circle at 80% 20%, rgba(176, 134, 52, 0.05) 0%, rgba(248, 249, 251, 0) 60%), #F8F9FB;
-  border-bottom: 1px solid #E5E7EB;
+  padding: 36px 0 45px;
+  background: radial-gradient(circle at 75% 35%, rgba(245, 237, 222, 0.75) 0%, rgba(253, 251, 247, 1) 70%);
+  border-bottom: 1px solid #EAE5D9;
+  position: relative;
+  overflow: hidden;
 }
 
 .wf-hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 24px;
   align-items: center;
 }
 
-.wf-hero-content h1 {
-  font-size: 36px;
-  font-weight: 800;
-  color: #0D2447;
-  margin-bottom: 8px;
-  line-height: 1.25;
-  letter-spacing: -0.5px;
+/* Hero Pill Badge */
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  padding: 6px 18px;
+  border-radius: 40px;
+  box-shadow: 0 4px 14px rgba(184, 134, 11, 0.08);
+  margin-bottom: 16px;
 }
 
-.wf-hero-tagline {
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(162, 123, 44, 0.95);
-  margin-bottom: 18px;
-  letter-spacing: 0.3px;
+.hero-pill-badge span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #B48226;
+  text-transform: uppercase;
+}
+
+.hero-pill-icon {
+  color: #B48226;
+}
+
+/* Hero Main Title */
+.hero-main-title {
+  font-family: "Poppins", Georgia, serif;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0A192F;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.hero-main-title .gold-highlight {
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #8A6208 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-main-title .navy-highlight {
+  color: #0D2447;
 }
 
 .wf-hero-desc {
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
   color: #4B5563;
-  margin-bottom: 32px;
-  max-width: 520px;
+  margin-bottom: 20px;
+  max-width: 490px;
 }
 
-.wf-contact-btn {
+/* Feature Grid 4 items */
+.hero-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin-bottom: 26px;
+  max-width: 500px;
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.hero-feature-item .feat-icon {
+  color: #B48226;
+  flex-shrink: 0;
+}
+
+/* Standalone Speak to Advisory Button */
+.speak-advisory-primary-btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   background: #0D2447;
   color: #FFFFFF;
-  border: 1px solid #0D2447;
-  padding: 16px 32px;
+  border: none;
+  padding: 15px 34px;
   border-radius: 40px;
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.5px;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(13, 36, 71, 0.15);
+  box-shadow: 0 8px 22px rgba(13, 36, 71, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 28px;
 }
 
-.wf-contact-btn:hover {
-  background: #153B69;
+.speak-advisory-primary-btn:hover {
+  background: #B48226;
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(13, 36, 71, 0.25);
+  box-shadow: 0 12px 28px rgba(180, 130, 38, 0.35);
 }
 
-.wf-hero-stats {
+/* Trust Bar */
+.hero-trust-bar {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid #E5E7EB;
+  gap: 16px;
 }
 
-.stat-item h3 {
-  font-size: 26px;
-  color: #0D2447;
-  font-weight: 800;
-  margin-bottom: 2px;
+.avatar-stack {
+  display: flex;
+  align-items: center;
 }
 
-.stat-item p {
-  font-size: 13px;
-  color: #6B7280;
-}
-
-/* Banner Frame */
-.wf-banner-card {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #FFFFFF;
-  border: 4px solid #FFFFFF;
-  box-shadow: 0 20px 45px rgba(13, 36, 71, 0.12);
-  transition: transform 0.4s ease;
-}
-
-.wf-banner-card:hover {
-  transform: translateY(-4px);
-}
-
-.wf-banner-img {
-  width: 100%;
-  height: 440px;
+.avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
   object-fit: cover;
-  display: block;
+  margin-left: -10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-img:first-child {
+  margin-left: 0;
+}
+
+.trust-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trust-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.trust-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.stars-gold {
+  color: #F59E0B;
+  letter-spacing: 1px;
+}
+
+.rating-score {
+  font-weight: 800;
+  color: #0D2447;
+}
+
+/* ----------------------------------------------------
+   RIGHT SIDE ORBIT GRAPHIC & FLOATING NODES (Resized for Clean View)
+---------------------------------------------------- */
+.hero-orbit-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-glow-bg {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.orbit-ring-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.orbit-circle-line {
+  fill: none;
+  stroke: rgba(184, 134, 11, 0.35);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+  animation: rotateOrbitRing 60s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotateOrbitRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbit-inner-line {
+  fill: none;
+  stroke: rgba(184, 134, 11, 0.2);
+  stroke-width: 1;
+}
+
+.orbit-spoke {
+  stroke: rgba(184, 134, 11, 0.25);
+  stroke-width: 1;
+}
+
+/* Center Logo Hub */
+.orbit-center-hub {
+  position: absolute;
+  width: 195px;
+  height: 195px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 3px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 14px 36px rgba(184, 134, 11, 0.15), inset 0 0 25px rgba(245, 237, 222, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.orbit-center-hub:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 50px rgba(184, 134, 11, 0.25);
+}
+
+.hub-inner-ring {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hub-title {
+  font-family: "Poppins", Georgia, serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #0D2447;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.hub-subtitle {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #B48226;
+  margin-top: 2px;
+}
+
+.hub-gold-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #B8860B, transparent);
+  margin: 8px 0;
+}
+
+.hub-motto {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4B5563;
+  line-height: 1.3;
+}
+
+.hub-motto-sub {
+  color: #B8860B;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* 6 Orbiting Nodes Base Style */
+.orbit-node {
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.node-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 217, 200, 0.8);
+  border-radius: 60px;
+  padding: 8px 18px 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  min-width: 160px;
+  max-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.orbit-node:hover .node-card {
+  border-color: #B8860B;
+  background: #FFFFFF;
+  box-shadow: 0 14px 32px rgba(184, 134, 11, 0.25);
+  transform: scale(1.08);
+}
+
+.node-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FDFBF7;
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.node-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.node-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.node-text h4 {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0D2447;
+  letter-spacing: 0.5px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.node-text p {
+  font-size: 9px;
+  color: #6B7280;
+  margin: 2px 0 0 0;
+  line-height: 1.2;
+}
+
+/* Specific Positions & Micro-Movement Floating Animations */
+/* Node 1: Personal Loan (Top, 12 o'clock) */
+.node-top {
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatTop 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes floatTop {
+  0% { transform: translate(-50%, -50%) translateY(0px); }
+  100% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+/* Node 2: Home Loan (Top-Right, 2 o'clock) */
+.node-top-right {
+  top: 22%;
+  left: 88%;
+  transform: translate(-50%, -50%);
+  animation: floatTopRight 4.6s ease-in-out infinite alternate 0.5s;
+}
+
+@keyframes floatTopRight {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px); }
+  100% { transform: translate(-50%, -50%) translate(8px, -6px); }
+}
+
+/* Node 3: Car Loan (Bottom-Right, 4 o'clock) */
+.node-bottom-right {
+  top: 72%;
+  left: 88%;
+  transform: translate(-50%, -50%);
+  animation: floatBottomRight 5s ease-in-out infinite alternate 1s;
+}
+
+@keyframes floatBottomRight {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px); }
+  100% { transform: translate(-50%, -50%) translate(8px, 6px); }
+}
+
+/* Node 4: Gold Loan (Bottom, 6 o'clock) */
+.node-bottom {
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatBottom 4.4s ease-in-out infinite alternate 1.5s;
+}
+
+@keyframes floatBottom {
+  0% { transform: translate(-50%, -50%) translateY(0px); }
+  100% { transform: translate(-50%, -50%) translateY(10px); }
+}
+
+/* Node 5: Loan Against Property (Bottom-Left, 8 o'clock) */
+.node-bottom-left {
+  top: 72%;
+  left: 12%;
+  transform: translate(-50%, -50%);
+  animation: floatBottomLeft 4.8s ease-in-out infinite alternate 2s;
+}
+
+@keyframes floatBottomLeft {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px); }
+  100% { transform: translate(-50%, -50%) translate(-8px, 6px); }
+}
+
+/* Node 6: Business Loan (Top-Left, 10 o'clock) */
+.node-top-left {
+  top: 22%;
+  left: 12%;
+  transform: translate(-50%, -50%);
+  animation: floatTopLeft 4.5s ease-in-out infinite alternate 2.5s;
+}
+
+@keyframes floatTopLeft {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px); }
+  100% { transform: translate(-50%, -50%) translate(-8px, -6px); }
 }
 
 /* ----------------------------------------------------
@@ -481,22 +826,21 @@
 
 .wf-bracket-card {
   background: #FFFFFF;
-  border: 1px dashed rgba(176, 134, 52, 0.4);
-  border-radius: 20px;
-  padding: 24px 20px;
+  border: 1px solid #EAE5D9;
+  border-radius: 22px;
+  padding: 26px 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(13, 36, 71, 0.04);
+  box-shadow: 0 10px 30px rgba(13, 36, 71, 0.04);
 }
 
 .wf-bracket-card:hover {
   background: #FFFFFF;
-  border-style: solid;
-  border-color: rgba(176, 134, 52, 0.75);
-  box-shadow: 0 16px 36px rgba(13, 36, 71, 0.1);
+  border-color: #B8860B;
+  box-shadow: 0 18px 40px rgba(184, 134, 11, 0.15);
   transform: translateY(-6px);
 }
 
@@ -512,8 +856,12 @@
 .wf-card-header h3 {
   font-size: 16px;
   color: #0D2447;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.3;
+}
+
+.card-header-icon {
+  color: #B48226;
 }
 
 .wf-item-list {
@@ -536,7 +884,7 @@
 }
 
 .wf-item-list li svg {
-  color: rgba(162, 123, 44, 0.95);
+  color: #B48226;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -564,8 +912,8 @@
   background: #0D2447;
   color: #FFFFFF;
   border: none;
-  padding: 10px 16px;
-  border-radius: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
@@ -573,11 +921,111 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .wf-bracket-card:hover .wf-card-action-btn {
-  background: rgba(162, 123, 44, 0.95);
+  background: #B48226;
+  box-shadow: 0 6px 18px rgba(180, 130, 38, 0.3);
+}
+
+/* Explore More Featured Card (As per sketch) */
+.explore-card-highlight {
+  background: linear-gradient(135deg, #0D2447 0%, #081B36 60%, #153B69 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 16px 40px rgba(13, 36, 71, 0.25) !important;
+  color: #FFFFFF;
+}
+
+.explore-card-highlight:hover {
+  border-color: #D4AF37 !important;
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25) !important;
+}
+
+.explore-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.explore-sparkle-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.18);
+  color: #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.explore-card-inner h3 {
+  font-family: "Poppins", Georgia, serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.explore-card-inner p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #D1D5DB;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.explore-card-btn {
+  background: #B48226 !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+.explore-card-highlight:hover .explore-card-btn {
+  background: #D4AF37 !important;
+  color: #0D2447 !important;
+}
+
+/* Explore More Column in Services Advisory Grid */
+.explore-service-col {
+  background: linear-gradient(135deg, #0D2447 0%, #081B36 60%, #153B69 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+.explore-service-col:hover {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 16px 36px rgba(212, 175, 55, 0.2) !important;
+}
+
+.explore-service-col h4 {
+  color: #FFFFFF !important;
+}
+
+.explore-service-col p {
+  color: #D1D5DB !important;
+}
+
+.explore-service-col .wf-service-icon {
+  background: rgba(212, 175, 55, 0.18) !important;
+  color: #D4AF37 !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.explore-service-col .wf-service-link {
+  color: #D4AF37 !important;
+  font-weight: 800 !important;
+}
+
+/* Wealth Management Section */
+.wf-wealth-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 /* ----------------------------------------------------
@@ -856,6 +1304,218 @@
   }
 
   .wf-hero-content h1 {
+    font-size: 34px;
+  }
+}
+
+/* ----------------------------------------------------
+   4.5 ONE-ON-ONE STRATEGY SESSION BANNER
+---------------------------------------------------- */
+.wf-strategy-section {
+  padding: 70px 0;
+  background: #F8F9FB;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.strategy-card-wrapper {
+  background: linear-gradient(135deg, #0D2447 0%, #081B36 60%, #153B69 100%);
+  border-radius: 28px;
+  padding: 50px 56px;
+  box-shadow: 0 20px 50px rgba(13, 36, 71, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.strategy-card-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, rgba(13, 36, 71, 0) 70%);
+  pointer-events: none;
+}
+
+.strategy-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Left Content */
+.strategy-pill-tag {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  color: #D4AF37;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.strategy-left-content h2 {
+  font-family: "Poppins", Georgia, serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.strategy-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+.strategy-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #E5E7EB;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.strategy-check-icon {
+  color: #D4AF37;
+  flex-shrink: 0;
+}
+
+/* Right Card */
+.strategy-right-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fee-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fee-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fee-amount-box {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.currency-symbol {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0D2447;
+}
+
+.fee-price {
+  font-size: 42px;
+  font-weight: 900;
+  color: #0D2447;
+  line-height: 1;
+}
+
+.session-duration {
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.strategy-divider {
+  height: 1px;
+  background: #E5E7EB;
+  margin: 20px 0;
+}
+
+.strategy-perks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.strategy-perks-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.perk-check {
+  color: #B48226;
+  flex-shrink: 0;
+}
+
+.strategy-book-btn {
+  width: 100%;
+  background: #0D2447;
+  color: #FFFFFF;
+  border: none;
+  padding: 16px;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(13, 36, 71, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.strategy-book-btn:hover {
+  background: #B48226;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(180, 130, 38, 0.35);
+}
+
+/* Strategy Banner Responsive */
+@media (max-width: 991px) {
+  .strategy-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .strategy-left-content h2 {
+    font-size: 30px;
+  }
+  .strategy-card-wrapper {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .strategy-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .strategy-left-content h2 {
+    font-size: 24px;
+  }
+  .fee-price {
     font-size: 34px;
   }
 }

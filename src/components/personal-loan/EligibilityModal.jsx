@@ -15,6 +15,17 @@ const EligibilityModal = ({ isOpen, onClose, initialMobile = "", initialLoanType
     if (initialMobile) setMobile(initialMobile);
   }, [initialMobile]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleNextStep1 = (e) => {
