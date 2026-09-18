@@ -713,10 +713,56 @@
   border-bottom: 1px solid #E5E7EB;
 }
 
+.slider-nav-arrows {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider-arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid #0D2447;
+  color: #0D2447;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(13, 36, 71, 0.06);
+}
+
+.slider-arrow-btn:hover {
+  background: #0D2447;
+  color: #FFFFFF;
+  border-color: #0D2447;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(13, 36, 71, 0.2);
+}
+
+.slider-arrow-btn:active {
+  transform: scale(0.95);
+}
+
 .wf-services-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 4px 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.wf-services-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.wf-services-grid .wf-service-col {
+  flex: 0 0 260px;
+  min-width: 260px;
 }
 
 .wf-service-col {
@@ -788,6 +834,74 @@
 
 .wf-service-col:hover .wf-service-link {
   color: rgba(162, 123, 44, 0.95);
+}
+
+/* ----------------------------------------------------
+   3.5 EXPLORE MORE COMPACT STRIP (Matching Wireframe)
+---------------------------------------------------- */
+.wf-explore-strip-section {
+  padding: 18px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.explore-strip-card {
+  background: #F8F9FB;
+  border: 1px solid #E5E7EB;
+  border-radius: 50px;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.explore-strip-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0D2447;
+  letter-spacing: -0.3px;
+}
+
+.strip-arrow {
+  color: rgba(162, 123, 44, 0.95);
+}
+
+.explore-strip-pills {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.strip-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid #0D2447;
+  color: #0D2447;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(13, 36, 71, 0.04);
+}
+
+.strip-pill-btn:hover {
+  background: #0D2447;
+  color: #FFFFFF;
+  border-color: #0D2447;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13, 36, 71, 0.18);
 }
 
 /* Scroll Reveal Animations */

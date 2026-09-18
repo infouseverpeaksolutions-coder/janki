@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   ArrowRight,
   ShieldCheck,
@@ -15,6 +15,7 @@ import {
   Award,
   Sparkles,
   ChevronRight,
+  ChevronLeft,
   BookOpen,
   Users
 } from "lucide-react";
@@ -42,6 +43,15 @@ const Home = () => {
     service: "Personal Loan Advisory",
     message: ""
   });
+
+  const servicesGridRef = useRef(null);
+
+  const scrollServices = (direction) => {
+    if (servicesGridRef.current) {
+      const scrollAmount = direction === "left" ? -310 : 310;
+      servicesGridRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   // Scroll reveal animation observer
   useEffect(() => {
@@ -89,7 +99,7 @@ const Home = () => {
       {/* ----------------------------------------------------
          1. HERO SECTION (Central Logo Orbit & Dynamic Moving Loan Nodes)
       ---------------------------------------------------- */}
-      <section className="wf-hero-section">
+      <section className="wf-hero-section" id="home">
         <Container>
           <div className="wf-hero-grid">
             {/* Left Content Column */}
@@ -311,7 +321,7 @@ const Home = () => {
       {/* ----------------------------------------------------
          2. ABOUT US (Vision, Mission, Values) + Sumit Advisory Banner
       ---------------------------------------------------- */}
-      <section className="wf-about-section reveal-on-scroll">
+      <section className="wf-about-section reveal-on-scroll" id="about">
         <Container>
           <div className="wf-about-grid">
             {/* Left: About Us with Tree Tabs */}
@@ -426,20 +436,36 @@ const Home = () => {
       {/* ----------------------------------------------------
          3. SERVICES : ADVISORY (6 Vertical Service Columns ① to ⑥)
       ---------------------------------------------------- */}
-      <section className="wf-services-section reveal-on-scroll">
+      <section className="wf-services-section reveal-on-scroll" id="advisory">
         <Container>
           <div className="section-wireframe-title reveal-on-scroll">
             <div>
               <span className="pill-tag">WHAT WE PROVIDE</span>
-              <h2>Services : Advisory.</h2>
+              <h2>Advisory cum service.</h2>
             </div>
-            <div className="title-sub-arrow">
-              <span>All to provide</span>
-              <ArrowRight size={18} />
+            <div className="slider-nav-arrows">
+              <button
+                type="button"
+                className="slider-arrow-btn"
+                onClick={() => scrollServices("left")}
+                aria-label="Previous service"
+                title="Previous"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                type="button"
+                className="slider-arrow-btn"
+                onClick={() => scrollServices("right")}
+                aria-label="Next service"
+                title="Next"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </div>
 
-          <div className="wf-services-grid">
+          <div className="wf-services-grid" ref={servicesGridRef}>
             {/* ① Personal Loan Advisory */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-1">
               <div className="wf-service-icon">
@@ -534,9 +560,67 @@ const Home = () => {
       </section>
 
       {/* ----------------------------------------------------
+         3.5 EXPLORE MORE COMPACT STRIP (Matching Wireframe)
+      ---------------------------------------------------- */}
+      <section className="wf-explore-strip-section reveal-on-scroll">
+        <Container>
+          <div className="explore-strip-card">
+            <div className="explore-strip-title">
+              <span>Explore More</span>
+              <ArrowRight size={18} className="strip-arrow" />
+            </div>
+
+            <div className="explore-strip-pills">
+              <button
+                type="button"
+                className="strip-pill-btn"
+                onClick={() => {
+                  const elem = document.getElementById("insurance");
+                  if (elem) elem.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <ShieldCheck size={16} />
+                <span>INSURANCE</span>
+              </button>
+
+              <button
+                type="button"
+                className="strip-pill-btn"
+                onClick={() => {
+                  const elem = document.getElementById("wealth");
+                  if (elem) elem.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <TrendingUp size={16} />
+                <span>WEALTH MANAGEMENT</span>
+              </button>
+
+              <button
+                type="button"
+                className="strip-pill-btn"
+                onClick={() => handleOpenApply("Personal Loan Advisory")}
+              >
+                <User size={16} />
+                <span>PERSONAL LOAN</span>
+              </button>
+
+              <button
+                type="button"
+                className="strip-pill-btn"
+                onClick={() => handleOpenApply("Business Loan Advisory")}
+              >
+                <Building2 size={16} />
+                <span>BUSINESS LOANS</span>
+              </button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ----------------------------------------------------
          4. LOAN & INSURANCE PRODUCTS (5 Box Cards + Explore More)
       ---------------------------------------------------- */}
-      <section className="wf-products-section reveal-on-scroll">
+      <section className="wf-products-section reveal-on-scroll" id="loans">
         <Container>
           <div className="section-wireframe-title reveal-on-scroll">
             <div>
@@ -589,7 +673,7 @@ const Home = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="wf-bracket-card reveal-on-scroll stagger-delay-2">
+            <div className="wf-bracket-card reveal-on-scroll stagger-delay-2" id="insurance">
               <div className="wf-card-header">
                 <h3>Insurance Portfolio</h3>
                 <ShieldCheck size={20} className="card-header-icon" />
@@ -726,7 +810,7 @@ const Home = () => {
       {/* ----------------------------------------------------
          4.5 WEALTH MANAGEMENT SECTION (Cards + Explore More)
       ---------------------------------------------------- */}
-      <section className="wf-wealth-section reveal-on-scroll">
+      <section className="wf-wealth-section reveal-on-scroll" id="wealth">
         <Container>
           <div className="section-wireframe-title reveal-on-scroll">
             <div>
@@ -1014,7 +1098,7 @@ const Home = () => {
       {/* ----------------------------------------------------
          5. CONTACT US SECTION
       ---------------------------------------------------- */}
-      {/* <section className="wf-contact-section reveal-on-scroll" id="contact">
+      <section className="wf-contact-section reveal-on-scroll" id="contact">
         <Container>
           <div className="wf-contact-card-box reveal-on-scroll">
             <div className="section-wireframe-title" style={{ marginBottom: "12px" }}>
@@ -1085,7 +1169,7 @@ const Home = () => {
             )}
           </div>
         </Container>
-      </section> */}
+      </section>
 
       {/* ----------------------------------------------------
          6. RESOURCES & NEWS BANNER

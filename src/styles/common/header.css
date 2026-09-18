@@ -7,27 +7,35 @@
   transition: all 0.3s ease;
 }
 
+/* Wider header container width for extra breathing room */
+.header .container {
+  width: min(1480px, 96%);
+}
+
 .header.scrolled {
   box-shadow: 0 8px 30px rgba(13, 36, 71, 0.08);
 }
 
 .header-content {
-  height: 84px;
+  height: 82px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 }
 
+/* 1. Brand / Logo */
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo-container {
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #E5E7EB;
@@ -46,42 +54,48 @@
 
 .brand-info h2 {
   color: #0D2447;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 1.2;
   margin: 0;
+  white-space: nowrap;
 }
 
 .brand-info .sub-heading {
   display: block;
-  color: rgba(162, 123, 44, 0.88);
-  font-size: 11px;
+  color: rgba(162, 123, 44, 0.95);
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
 }
 
+/* Navigation items along X-axis */
 .navigation {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-link {
   color: #374151;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 8px 0;
   position: relative;
+  white-space: nowrap;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: rgba(162, 123, 44, 0.9);
+  color: rgba(162, 123, 44, 0.95);
 }
 
 .nav-link.active::after {
@@ -90,11 +104,39 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: rgba(162, 123, 44, 0.9);
+  height: 2.5px;
+  background: rgba(162, 123, 44, 0.95);
   border-radius: 2px;
 }
 
+/* Specific styling for Donate link */
+.nav-link.donate-nav-btn {
+  color: #DC2626;
+  background: rgba(220, 38, 38, 0.06);
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  border: 1px solid rgba(220, 38, 38, 0.22);
+  transition: all 0.2s ease;
+}
+
+.nav-link.donate-nav-btn:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+  border-color: #DC2626;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
+}
+
+.heart-nav-icon {
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.donate-nav-btn:hover .heart-nav-icon {
+  transform: scale(1.18);
+}
+
+/* Dropdown styling */
 .nav-item-dropdown {
   position: relative;
 }
@@ -133,10 +175,15 @@
 .dropdown-item {
   padding: 10px 14px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #374151;
   text-decoration: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -167,46 +214,75 @@
   border-radius: 10px;
 }
 
+/* Actions area */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.phone-quick {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #0D2447;
-  text-decoration: none;
-}
-
-.apply-now-btn {
+/* Quick Contact Segmented Box */
+.quick-contact-box {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #0D2447;
-  color: #FFFFFF;
-  border: none;
-  padding: 12px 22px;
+  background: #FFFFFF;
+  border: 1.5px solid #0D2447;
   border-radius: 30px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
+  padding: 3px 4px;
+  box-shadow: 0 4px 14px rgba(13, 36, 71, 0.08);
   transition: all 0.3s ease;
 }
 
-.apply-now-btn:hover {
-  background: #153B69;
-  box-shadow: 0 6px 18px rgba(13, 36, 71, 0.25);
-  transform: translateY(-1px);
+.desktop-quick-box:hover {
+  border-color: rgba(162, 123, 44, 0.95);
+  box-shadow: 0 6px 20px rgba(13, 36, 71, 0.14);
 }
 
+.desktop-quick-box .quick-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  color: #0D2447;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quick-divider {
+  width: 1px;
+  height: 18px;
+  background: #CBD5E1;
+  margin: 0 2px;
+}
+
+/* Individual Icon Hover Styling */
+.quick-btn.call-btn:hover {
+  background: #0D2447;
+  color: #FFFFFF;
+  transform: translateY(-2px) scale(1.1);
+}
+
+.quick-btn.wa-btn {
+  color: #25D366;
+}
+
+.quick-btn.wa-btn:hover {
+  background: #25D366;
+  color: #FFFFFF;
+  transform: translateY(-2px) scale(1.1);
+}
+
+.quick-btn.mail-btn:hover {
+  background: #EA4335;
+  color: #FFFFFF;
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* Hamburger menu for small screens */
 .mobile-hamburger {
   display: none;
   background: transparent;
@@ -214,10 +290,13 @@
   color: #0D2447;
   cursor: pointer;
   z-index: 1250;
+  padding: 4px;
 }
 
 .mobile-only-action {
   display: none;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .mobile-menu-overlay {
@@ -230,26 +309,41 @@
   animation: fadeIn 0.3s ease;
 }
 
-@media (max-width: 992px) {
+/* Responsive queries */
+@media (max-width: 1280px) {
+  .navigation {
+    gap: 16px;
+  }
+  .nav-link {
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .desktop-quick-box {
+    display: none;
+  }
+  
   .navigation {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 300px;
-    max-width: 85vw;
+    width: 320px;
+    max-width: 88vw;
     height: 100vh;
     background: #FFFFFF;
     border-left: 1px solid #E5E7EB;
     flex-direction: column;
-    padding: 90px 24px 30px;
-    gap: 18px;
+    padding: 85px 24px 30px;
+    gap: 16px;
     align-items: flex-start;
     display: flex;
     z-index: 1200;
     box-shadow: -10px 0 35px rgba(13, 36, 71, 0.2);
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
 
   .navigation.mobile-active {
@@ -260,18 +354,31 @@
     display: block;
   }
 
-  .phone-quick {
-    display: none;
-  }
-
   .mobile-only-action {
     display: block;
+  }
+  
+  .mobile-only-action .quick-contact-box {
     width: 100%;
-    margin-top: 10px;
+    justify-content: space-around;
+    padding: 6px;
   }
 
-  .mobile-only-action .apply-now-btn {
+  .mobile-only-action .quick-btn {
+    padding: 6px 12px;
+    border-radius: 18px;
+    gap: 6px;
+    width: auto;
+    height: auto;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .nav-link {
+    font-size: 15px;
     width: 100%;
-    justify-content: center;
+    text-align: left;
+    justify-content: flex-start;
+    padding: 10px 0;
   }
 }
