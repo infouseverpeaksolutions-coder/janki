@@ -68,6 +68,24 @@ const Header = ({ onOpenApply }) => {
 
             {/* NAV ITEMS ALONG X-AXIS */}
             <nav className={`navigation ${mobileMenuOpen ? "mobile-active" : ""}`}>
+              {/* Drawer Top Header (Mobile Only Logo) */}
+              <div className="mobile-drawer-header">
+                <NavLink to="/home" className="brand drawer-brand" onClick={closeMenus}>
+                  <div className="logo-container">
+                    <img
+                      src="/logo.jpeg"
+                      alt="Janki Financial Services Logo"
+                      className="brand-logo-img"
+                    />
+                  </div>
+                  <div className="brand-info">
+                    <h2>
+                      JANKI <span className="sub-heading">FINANCIAL SERVICES</span>
+                    </h2>
+                  </div>
+                </NavLink>
+              </div>
+
               {/* 2. Home */}
               <NavLink
                 to="/home"
@@ -209,9 +227,8 @@ const Header = ({ onOpenApply }) => {
               {/* Mobile version of quick contact box */}
               <div className="mobile-only-action">
                 <div className="quick-contact-box">
-                  <a href="tel:+919870643210" className="quick-btn call-btn" title="Call Us">
+                  <a href="tel:+919870643210" className="quick-btn call-btn" title="Call Us" aria-label="Call Us">
                     <FaPhone size={14} />
-                    <span>calling</span>
                   </a>
                   <span className="quick-divider"></span>
                   <a
@@ -220,18 +237,18 @@ const Header = ({ onOpenApply }) => {
                     rel="noreferrer"
                     className="quick-btn wa-btn"
                     title="WhatsApp"
+                    aria-label="WhatsApp"
                   >
                     <FaWhatsapp size={16} />
-                    <span>WA</span>
                   </a>
                   <span className="quick-divider"></span>
                   <a
                     href="mailto:support@jankifinancial.com"
                     className="quick-btn mail-btn"
                     title="Email Us"
+                    aria-label="Email Us"
                   >
                     <FaEnvelope size={14} />
-                    <span>mail</span>
                   </a>
                 </div>
               </div>
@@ -239,7 +256,7 @@ const Header = ({ onOpenApply }) => {
 
             {/* 10. QUICK CONTACT BOX ON RIGHT [ calling | WA | mail ] & MOBILE MENU HAMBURGER */}
             <div className="header-actions">
-              <div className="quick-contact-box desktop-quick-box">
+              <div className="quick-contact-box header-quick-box">
                 <a
                   href="tel:+919870643210"
                   className="quick-btn call-btn"

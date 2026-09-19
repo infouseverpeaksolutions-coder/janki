@@ -234,12 +234,12 @@
   transition: all 0.3s ease;
 }
 
-.desktop-quick-box:hover {
+.header-quick-box:hover {
   border-color: rgba(162, 123, 44, 0.95);
   box-shadow: 0 6px 20px rgba(13, 36, 71, 0.14);
 }
 
-.desktop-quick-box .quick-btn {
+.quick-contact-box .quick-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -309,6 +309,14 @@
   animation: fadeIn 0.3s ease;
 }
 
+.mobile-drawer-header {
+  display: none;
+  width: 100%;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #F1F5F9;
+  margin-bottom: 4px;
+}
+
 /* Responsive queries */
 @media (max-width: 1280px) {
   .navigation {
@@ -320,8 +328,14 @@
 }
 
 @media (max-width: 1120px) {
-  .desktop-quick-box {
-    display: none;
+  .header-quick-box {
+    display: inline-flex;
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   
   .navigation {
@@ -335,8 +349,8 @@
     background: #FFFFFF;
     border-left: 1px solid #E5E7EB;
     flex-direction: column;
-    padding: 85px 24px 30px;
-    gap: 16px;
+    padding: 22px 24px 30px;
+    gap: 14px;
     align-items: flex-start;
     display: flex;
     z-index: 1200;
@@ -365,13 +379,10 @@
   }
 
   .mobile-only-action .quick-btn {
-    padding: 6px 12px;
-    border-radius: 18px;
-    gap: 6px;
-    width: auto;
-    height: auto;
-    font-size: 13px;
-    font-weight: 700;
+    padding: 0;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
   }
 
   .nav-link {
@@ -380,5 +391,27 @@
     text-align: left;
     justify-content: flex-start;
     padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-info h2 {
+    font-size: 13px;
+  }
+  .brand-info .sub-heading {
+    font-size: 7.5px;
+    letter-spacing: 0.2px;
+  }
+  .logo-container {
+    width: 38px;
+    height: 38px;
+  }
+  .quick-contact-box .quick-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .quick-divider {
+    height: 14px;
+    margin: 0 1px;
   }
 }

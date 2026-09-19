@@ -48,7 +48,9 @@ const Home = () => {
 
   const scrollServices = (direction) => {
     if (servicesGridRef.current) {
-      const scrollAmount = direction === "left" ? -310 : 310;
+      const firstCard = servicesGridRef.current.querySelector(".wf-service-col");
+      const cardWidth = firstCard ? firstCard.offsetWidth + 16 : 290;
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
       servicesGridRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -141,15 +143,28 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Speak to Advisory Button */}
-              <button
-                type="button"
-                className="speak-advisory-primary-btn"
-                onClick={() => handleOpenApply("Financial Advisory Consultation")}
-              >
-                <span>Speak to Advisory</span>
-                <ArrowRight size={18} />
-              </button>
+              {/* Hero Action Buttons: Explore Loan Options & Talk to an Advisor */}
+              <div className="hero-cta-group">
+                <button
+                  type="button"
+                  className="hero-primary-btn"
+                  onClick={() => {
+                    const elem = document.getElementById("loans");
+                    if (elem) elem.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <span>Explore Loan Options</span>
+                  <ArrowRight size={18} />
+                </button>
+                <button
+                  type="button"
+                  className="hero-secondary-btn"
+                  onClick={() => handleOpenApply("Financial Advisory Consultation")}
+                >
+                  <PhoneCall size={18} />
+                  <span>Talk to an Advisor</span>
+                </button>
+              </div>
 
               {/* Trust Rating Bar */}
               <div className="hero-trust-bar">
