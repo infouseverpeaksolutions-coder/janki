@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { ChevronDown, Menu, X, Heart } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X, Heart, MessageSquareText, Calculator } from "lucide-react";
 import { FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6";
 
 import Container from "./Container";
@@ -9,9 +9,12 @@ import "../../styles/common/header.css";
 
 const Header = ({ onOpenApply }) => {
   const [loansDropdownOpen, setLoansDropdownOpen] = useState(false);
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
+  const [emiSubDropdownOpen, setEmiSubDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [donateModalOpen, setDonateModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hoverPill, setHoverPill] = useState({ left: 0, width: 0, opacity: 0 });
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,9 +27,36 @@ const Header = ({ onOpenApply }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavItemHover = (e) => {
+    if (!e || !e.currentTarget) return;
+    const target = e.currentTarget;
+    setHoverPill({
+      left: target.offsetLeft,
+      width: target.offsetWidth,
+      opacity: 1
+    });
+  };
+
+  const handleNavMouseLeave = () => {
+    setHoverPill((prev) => ({ ...prev, opacity: 0 }));
+  };
+
   const closeMenus = () => {
     setLoansDropdownOpen(false);
+    setMoreDropdownOpen(false);
+    setEmiSubDropdownOpen(false);
     setMobileMenuOpen(false);
+  };
+
+  const triggerHighlight = (elem) => {
+    if (!elem) return;
+    elem.classList.remove("section-scroll-highlight");
+    // Trigger reflow to restart CSS animation
+    void elem.offsetWidth;
+    elem.classList.add("section-scroll-highlight");
+    setTimeout(() => {
+      elem.classList.remove("section-scroll-highlight");
+    }, 2400);
   };
 
   const scrollToSection = (id) => {
@@ -35,13 +65,17 @@ const Header = ({ onOpenApply }) => {
       navigate(`/home#${id}`);
       setTimeout(() => {
         const elem = document.getElementById(id);
-        if (elem) elem.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth", block: "start" });
+          triggerHighlight(elem);
+        }
+      }, 150);
       return;
     }
     const elem = document.getElementById(id);
     if (elem) {
-      elem.scrollIntoView({ behavior: "smooth" });
+      elem.scrollIntoView({ behavior: "smooth", block: "start" });
+      triggerHighlight(elem);
     }
   };
 
@@ -67,7 +101,20 @@ const Header = ({ onOpenApply }) => {
             </NavLink>
 
             {/* NAV ITEMS ALONG X-AXIS */}
-            <nav className={`navigation ${mobileMenuOpen ? "mobile-active" : ""}`}>
+            <nav
+              className={`navigation ${mobileMenuOpen ? "mobile-active" : ""}`}
+              onMouseLeave={handleNavMouseLeave}
+            >
+              {/* Dynamic Sliding Hover Indicator Pill */}
+              <div
+                className="nav-sliding-pill"
+                style={{
+                  left: `${hoverPill.left}px`,
+                  width: `${hoverPill.width}px`,
+                  opacity: hoverPill.opacity
+                }}
+              />
+
               {/* Drawer Top Header (Mobile Only Logo) */}
               <div className="mobile-drawer-header">
                 <NavLink to="/home" className="brand drawer-brand" onClick={closeMenus}>
@@ -91,6 +138,7 @@ const Header = ({ onOpenApply }) => {
                 to="/home"
                 className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
                 onClick={closeMenus}
+                onMouseEnter={handleNavItemHover}
               >
                 Home
               </NavLink>
@@ -100,6 +148,7 @@ const Header = ({ onOpenApply }) => {
                 type="button"
                 className="nav-link nav-btn-link"
                 onClick={() => scrollToSection("about")}
+                onMouseEnter={handleNavItemHover}
               >
                 About Us
               </button>
@@ -109,6 +158,7 @@ const Header = ({ onOpenApply }) => {
                 type="button"
                 className="nav-link nav-btn-link"
                 onClick={() => scrollToSection("advisory")}
+                onMouseEnter={handleNavItemHover}
               >
                 Advisory
               </button>
@@ -116,7 +166,10 @@ const Header = ({ onOpenApply }) => {
               {/* 5. Loans (with dropdown) */}
               <div
                 className="nav-item-dropdown"
-                onMouseEnter={() => setLoansDropdownOpen(true)}
+                onMouseEnter={(e) => {
+                  setLoansDropdownOpen(true);
+                  handleNavItemHover(e);
+                }}
                 onMouseLeave={() => setLoansDropdownOpen(false)}
               >
                 <button
@@ -180,6 +233,7 @@ const Header = ({ onOpenApply }) => {
                 type="button"
                 className="nav-link nav-btn-link"
                 onClick={() => scrollToSection("insurance")}
+                onMouseEnter={handleNavItemHover}
               >
                 Insurance
               </button>
@@ -189,29 +243,213 @@ const Header = ({ onOpenApply }) => {
                 type="button"
                 className="nav-link nav-btn-link"
                 onClick={() => scrollToSection("wealth")}
+                onMouseEnter={handleNavItemHover}
               >
                 Wealth Management
               </button>
 
-              {/* 8. EMI Calculator */}
-              <button
-                type="button"
-                className="nav-link nav-btn-link"
-                onClick={() => scrollToSection("emi-calculator")}
+              {/* 8. More (with dropdown: EMI Calculator, Resources, Blog) */}
+              <div
+                className="nav-item-dropdown"
+                onMouseEnter={(e) => {
+                  setMoreDropdownOpen(true);
+                  handleNavItemHover(e);
+                }}
+                onMouseLeave={() => setMoreDropdownOpen(false)}
               >
-                EMI Calculator
-              </button>
+                <button
+                  type="button"
+                  className="nav-link dropdown-btn"
+                  onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                >
+                  More <ChevronDown size={14} className={`chevron ${moreDropdownOpen ? "rotate" : ""}`} />
+                </button>
+
+                {moreDropdownOpen && (
+                  <div className="dropdown-menu">
+                    {/* Sub-dropdown for EMI Calculator & All Loan Solutions */}
+                    <div
+                      className="sub-dropdown-wrapper"
+                      onMouseEnter={() => setEmiSubDropdownOpen(true)}
+                      onMouseLeave={() => setEmiSubDropdownOpen(false)}
+                    >
+                      <button
+                        type="button"
+                        className="dropdown-item has-sub-menu"
+                        onClick={() => {
+                          setEmiSubDropdownOpen(!emiSubDropdownOpen);
+                          scrollToSection("emi-calculator");
+                        }}
+                      >
+                        <span>EMI Calculator & Services</span>
+                        <ChevronRight size={14} className={`sub-chevron ${emiSubDropdownOpen ? "rotate-90" : ""}`} />
+                      </button>
+
+                      {emiSubDropdownOpen && (
+                        <div className="sub-dropdown-menu">
+                          <button
+                            type="button"
+                            className="sub-dropdown-item main-calc-item"
+                            onClick={() => {
+                              closeMenus();
+                              scrollToSection("emi-calculator");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_calculator.png" alt="EMI Calculator" className="sub-3d-img" />
+                            </div>
+                            <span>EMI Calculator (Main)</span>
+                          </button>
+
+                          <div className="sub-dropdown-divider"></div>
+                          <span className="sub-menu-header">TAILORED SOLUTIONS</span>
+
+                          <button
+                            type="button"
+                            className="sub-dropdown-item"
+                            onClick={() => {
+                              closeMenus();
+                              if (onOpenApply) onOpenApply("Home Loan");
+                              else scrollToSection("loan-categories");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_home_loan.png" alt="Home Loan" className="sub-3d-img" />
+                            </div>
+                            <span>Home Loan</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="sub-dropdown-item"
+                            onClick={() => {
+                              closeMenus();
+                              if (onOpenApply) onOpenApply("Car Loan");
+                              else scrollToSection("loan-categories");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_car_loan.png" alt="Car Loan" className="sub-3d-img" />
+                            </div>
+                            <span>Car Loan</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="sub-dropdown-item"
+                            onClick={() => {
+                              closeMenus();
+                              if (onOpenApply) onOpenApply("Personal Loan");
+                              else scrollToSection("loan-categories");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_personal_loan.png" alt="Personal Loan" className="sub-3d-img" />
+                            </div>
+                            <span>Personal Loan</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="sub-dropdown-item"
+                            onClick={() => {
+                              closeMenus();
+                              if (onOpenApply) onOpenApply("Business Loan");
+                              else scrollToSection("loan-categories");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_business_loan.png" alt="Business Loan" className="sub-3d-img" />
+                            </div>
+                            <span>Business Loan</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="sub-dropdown-item"
+                            onClick={() => {
+                              closeMenus();
+                              if (onOpenApply) onOpenApply("Loan Against Property");
+                              else scrollToSection("loan-categories");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_property_loan.png" alt="Loan Against Property" className="sub-3d-img" />
+                            </div>
+                            <span>Loan Against Property</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="sub-dropdown-item"
+                            onClick={() => {
+                              closeMenus();
+                              if (onOpenApply) onOpenApply("Gold Loan");
+                              else scrollToSection("loan-categories");
+                            }}
+                          >
+                            <div className="sub-item-icon-box">
+                              <img src="/images/node_gold_loan.png" alt="Gold Loan" className="sub-3d-img" />
+                            </div>
+                            <span>Gold Loan</span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => {
+                        closeMenus();
+                        scrollToSection("resources");
+                      }}
+                    >
+                      Resources
+                    </button>
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => {
+                        closeMenus();
+                        scrollToSection("blog");
+                      }}
+                    >
+                      Blog
+                    </button>
+                  </div>
+                )}
+              </div>
 
               {/* 9. Contact Us */}
               <button
                 type="button"
                 className="nav-link nav-btn-link"
                 onClick={() => scrollToSection("contact")}
+                onMouseEnter={handleNavItemHover}
               >
                 Contact Us
               </button>
 
-              {/* 9. Donate */}
+              {/* 10. Enquire */}
+              <button
+                type="button"
+                className="nav-link enquire-nav-btn"
+                onClick={() => {
+                  closeMenus();
+                  if (onOpenApply) {
+                    onOpenApply("General Inquiry");
+                  } else {
+                    scrollToSection("contact");
+                  }
+                }}
+                onMouseEnter={handleNavItemHover}
+              >
+                <MessageSquareText size={14} className="enquire-nav-icon" />
+                <span>Enquire</span>
+              </button>
+
+              {/* 11. Donate */}
               <button
                 type="button"
                 className="nav-link donate-nav-btn"
@@ -219,6 +457,7 @@ const Header = ({ onOpenApply }) => {
                   closeMenus();
                   setDonateModalOpen(true);
                 }}
+                onMouseEnter={handleNavItemHover}
               >
                 <Heart size={14} className="heart-nav-icon" />
                 <span>Donate</span>

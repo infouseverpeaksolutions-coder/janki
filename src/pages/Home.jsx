@@ -17,16 +17,19 @@ import {
   ChevronRight,
   ChevronLeft,
   BookOpen,
-  Users
+  Users,
+  Handshake
 } from "lucide-react";
 
 import Container from "../components/common/Container";
 import EligibilityModal from "../components/personal-loan/EligibilityModal";
+import LoanCategories from "../components/personal-loan/LoanCategories";
 import HowItWorks from "../components/personal-loan/HowItWorks";
 import WhyChooseJanki from "../components/personal-loan/WhyChooseJanki";
 import TestimonialsSection from "../components/personal-loan/TestimonialsSection";
 import EMICalculatorSection from "../components/personal-loan/EMICalculatorSection";
 import FAQSection from "../components/personal-loan/FAQSection";
+import { partnerBanksData } from "../components/common/BankLogo";
 
 import "../styles/home-wireframe.css";
 import "../styles/personal-loan.css";
@@ -40,6 +43,8 @@ const Home = () => {
   const [contactForm, setContactForm] = useState({
     name: "",
     phone: "",
+    state: "",
+    city: "",
     service: "Personal Loan Advisory",
     message: ""
   });
@@ -331,114 +336,126 @@ const Home = () => {
             </div>
           </div>
         </Container>
+
+        {/* Infinite Bank Partners Marquee Strip */}
+        <div className="hero-marquee-wrapper">
+          <div className="hero-marquee-header">
+            <span className="marquee-label">20+ TRUSTED LENDERS</span>
+          </div>
+          <div className="hero-marquee-scroll-container">
+            <div className="hero-marquee-track">
+              {[...partnerBanksData, ...partnerBanksData].map((bank, index) => {
+                const LogoComp = bank.Logo;
+                return (
+                  <div key={`${bank.id}-${index}`} className="marquee-bank-item">
+                    <div className="bank-logo-icon">
+                      <LogoComp />
+                    </div>
+                    <span className="bank-name">{bank.name}</span>
+                    <span className="bank-roi">{bank.roi} ROI</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ----------------------------------------------------
-         2. ABOUT US (Vision, Mission, Values) + Sumit Advisory Banner
+         1.5 LOAN CATEGORIES (Tailored Financial Solutions For Every Need)
+      ---------------------------------------------------- */}
+      <LoanCategories onOpenApply={handleOpenApply} />
+
+      {/* ----------------------------------------------------
+         2. EXPERT ADVISORY & BOOKING CONSULTATION SECTION
       ---------------------------------------------------- */}
       <section className="wf-about-section reveal-on-scroll" id="about">
         <Container>
-          <div className="wf-about-grid">
-            {/* Left: About Us with Tree Tabs */}
-            <div className="wf-about-left reveal-on-scroll stagger-delay-1">
-              <span className="pill-tag">OUR PHILOSOPHY</span>
-              <div className="section-wireframe-title" style={{ marginBottom: "16px" }}>
-                <h2>About Us.</h2>
+          <div className="wf-about-grid" style={{ alignItems: "stretch" }}>
+            {/* Left Column: Practice Header & 2x2 Feature Grid */}
+            <div className="wf-advisory-practice-left reveal-on-scroll stagger-delay-1">
+              <div className="advisory-subtitle-box" style={{ marginBottom: "20px" }}>
+                <span className="pill-tag">CORE PRACTICE AREAS</span>
+                <h3 style={{ fontSize: "26px", color: "#0D2447", fontWeight: "800", marginTop: "8px", marginBottom: "8px", lineHeight: "1.3" }}>
+                  Advisory-led loan & financial services
+                </h3>
+                <p style={{ color: "#4B5563", fontSize: "14.5px", lineHeight: "1.55" }}>
+                  From individual liquidity needs to complex business capital structures — each engagement is led by a senior consultant, not a call-centre.
+                </p>
               </div>
-              <p style={{ color: "#6B7280", fontSize: "15px", marginBottom: "20px" }}>
-                Our foundation is built on three core pillars that drive our commitment to excellence and client success:
-              </p>
 
-              <div className="wf-tree-container">
-                {/* 3 Connected Pillars / Tabs */}
-                <div className="wf-tree-nodes">
-                  <button
-                    className={`wf-tree-tab ${activeTab === "VISION" ? "active" : ""}`}
-                    onClick={() => setActiveTab("VISION")}
-                  >
-                    [ VISION ]
-                  </button>
-
-                  <button
-                    className={`wf-tree-tab ${activeTab === "MISSION" ? "active" : ""}`}
-                    onClick={() => setActiveTab("MISSION")}
-                  >
-                    [ MISSION ]
-                  </button>
-
-                  <button
-                    className={`wf-tree-tab ${activeTab === "VALUES" ? "active" : ""}`}
-                    onClick={() => setActiveTab("VALUES")}
-                  >
-                    [ VALUES ]
-                  </button>
+              {/* 4 Feature Cards 2x2 Grid */}
+              <div className="advisory-cards-2x2">
+                <div className="advisory-feature-card">
+                  <div className="advisory-card-icon">
+                    <Handshake size={22} />
+                  </div>
+                  <h4>Personalized Bank Matching</h4>
+                  <p>
+                    We compare offers across 20+ lenders to find the exact fit for your profile — not the highest commission.
+                  </p>
                 </div>
 
-                {/* Active Tab Content Card */}
-                <div className="wf-tree-content">
-                  {activeTab === "VISION" && (
-                    <div>
-                      <h3>
-                        <TrendingUp size={20} className="text-gold" /> Vision
-                      </h3>
-                      <p>
-                        To be India's most trusted and client-centric financial advisory firm, providing transparent loan access, lowest interest rates, and sustainable wealth growth for every family and enterprise.
-                      </p>
-                    </div>
-                  )}
+                <div className="advisory-feature-card">
+                  <div className="advisory-card-icon">
+                    <Users size={22} />
+                  </div>
+                  <h4>End-to-End Application Support</h4>
+                  <p>
+                    Document prep, submission, follow-up and negotiation — handled by a dedicated relationship manager.
+                  </p>
+                </div>
 
-                  {activeTab === "MISSION" && (
-                    <div>
-                      <h3>
-                        <Award size={20} className="text-gold" /> Mission
-                      </h3>
-                      <p>
-                        Our mission is to simplify complex banking processes, negotiate custom loan structures with top lenders, and ensure rapid 24-hour disbursal with 100% transparency and zero hidden charges.
-                      </p>
-                    </div>
-                  )}
+                <div className="advisory-feature-card">
+                  <div className="advisory-card-icon">
+                    <CheckCircle2 size={22} />
+                  </div>
+                  <h4>Higher Approval Odds</h4>
+                  <p>
+                    Deep underwriting insight means we position your file to maximise sanction probability first time.
+                  </p>
+                </div>
 
-                  {activeTab === "VALUES" && (
-                    <div>
-                      <h3>
-                        <ShieldCheck size={20} className="text-gold" /> Values
-                      </h3>
-                      <p>
-                        Integrity, Client-First Dedication, Speed, & Absolute Confidentiality. We put our client's financial health ahead of everything else.
-                      </p>
-                    </div>
-                  )}
+                <div className="advisory-feature-card">
+                  <div className="advisory-card-icon">
+                    <Sparkles size={22} />
+                  </div>
+                  <h4>Transparent Advisory</h4>
+                  <p>
+                    Flat consulting fee, disclosed lender commissions, and unbiased recommendations. Always.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Right: Perfect - Sumit Advisory Banner */}
+            {/* Right Column: Senior Financial Advisor Booking Consultation Card */}
             <div className="wf-advisory-wrapper reveal-on-scroll stagger-delay-2">
               <div className="wf-advisory-heading">
-                <span className="pill-tag">EXPERT GUIDANCE</span>
-                <h3>Perfect - Sumit Advisory.</h3>
+                <span className="pill-tag">EXPERT CONSULTATION</span>
+                <h3>Book Consultation</h3>
               </div>
 
               <div className="wf-advisory-card">
                 <div className="wf-advisory-img-box">
                   <img
                     src="/images/advisory_banner.png"
-                    alt="Sumit Financial Advisory"
+                    alt="Senior Financial Advisory Consultant"
                   />
-                  <span className="wf-advisory-tag">EXPERT CONSULTANT</span>
+                  <span className="wf-advisory-tag">SENIOR STRATEGIST</span>
                 </div>
                 <div className="wf-advisory-body">
                   <div>
                     <h4>Personalized Financial Advisory</h4>
                     <p>
-                      Get 1-on-1 consultation from Sumit Advisory team for corporate debt structuring, MSME expansion funding, and high-value loan negotiations.
+                      Get direct 1-on-1 consultation from senior advisory team for corporate debt structuring, MSME expansion funding, and high-value loan negotiations.
                     </p>
                   </div>
                   <button
                     className="wf-card-action-btn"
-                    onClick={() => handleOpenApply("Sumit Financial Advisory")}
+                    onClick={() => handleOpenApply("Senior Financial Advisory Consultation")}
                   >
-                    <span>Book Free Consultation</span>
+                    <PhoneCall size={16} />
+                    <span>Book Consultation</span>
                     <ArrowRight size={14} />
                   </button>
                 </div>
@@ -575,62 +592,6 @@ const Home = () => {
       </section>
 
       {/* ----------------------------------------------------
-         3.5 EXPLORE MORE COMPACT STRIP (Matching Wireframe)
-      ---------------------------------------------------- */}
-      <section className="wf-explore-strip-section reveal-on-scroll">
-        <Container>
-          <div className="explore-strip-card">
-            <div className="explore-strip-title">
-              <span>Explore More</span>
-              <ArrowRight size={18} className="strip-arrow" />
-            </div>
-
-            <div className="explore-strip-pills">
-              <button
-                type="button"
-                className="strip-pill-btn"
-                onClick={() => {
-                  const elem = document.getElementById("insurance");
-                  if (elem) elem.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <ShieldCheck size={16} />
-                <span>INSURANCE</span>
-              </button>
-
-              <button
-                type="button"
-                className="strip-pill-btn"
-                onClick={() => {
-                  const elem = document.getElementById("wealth");
-                  if (elem) elem.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <TrendingUp size={16} />
-                <span>WEALTH MANAGEMENT</span>
-              </button>
-
-              <button
-                type="button"
-                className="strip-pill-btn"
-                onClick={() => handleOpenApply("Personal Loan Advisory")}
-              >
-                <User size={16} />
-                <span>PERSONAL LOAN</span>
-              </button>
-
-              <button
-                type="button"
-                className="strip-pill-btn"
-                onClick={() => handleOpenApply("Business Loan Advisory")}
-              >
-                <Building2 size={16} />
-                <span>BUSINESS LOANS</span>
-              </button>
-            </div>
-          </div>
-        </Container>
-      </section>
 
       {/* ----------------------------------------------------
          4. LOAN & INSURANCE PRODUCTS (5 Box Cards + Explore More)
@@ -1131,7 +1092,9 @@ const Home = () => {
             ) : (
               <form onSubmit={handleContactSubmit} className="wf-contact-form-grid">
                 <div className="wf-input-field">
-                  <label>Full Name</label>
+                  <label>
+                    Full Name <span style={{ color: "#EF4444" }}>*</span>
+                  </label>
                   <input
                     type="text"
                     placeholder="Enter your full name"
@@ -1142,7 +1105,9 @@ const Home = () => {
                 </div>
 
                 <div className="wf-input-field">
-                  <label>Phone Number</label>
+                  <label>
+                    Phone Number <span style={{ color: "#EF4444" }}>*</span>
+                  </label>
                   <input
                     type="tel"
                     placeholder="Enter 10-digit mobile number"
@@ -1152,11 +1117,39 @@ const Home = () => {
                   />
                 </div>
 
+                <div className="wf-input-field">
+                  <label>
+                    State <span style={{ color: "#EF4444" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your state"
+                    value={contactForm.state}
+                    onChange={(e) => setContactForm({ ...contactForm, state: e.target.value })}
+                    required
+                  />
+                </div>
+
+                <div className="wf-input-field">
+                  <label>
+                    City <span style={{ color: "#9CA3AF", fontWeight: "normal", fontSize: "12px" }}>(Optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your city"
+                    value={contactForm.city}
+                    onChange={(e) => setContactForm({ ...contactForm, city: e.target.value })}
+                  />
+                </div>
+
                 <div className="wf-input-field wf-input-full">
-                  <label>Select Service / Inquiry Type</label>
+                  <label>
+                    Select Service / Inquiry Type <span style={{ color: "#EF4444" }}>*</span>
+                  </label>
                   <select
                     value={contactForm.service}
                     onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
+                    required
                   >
                     <option value="Personal Loan Advisory">Personal Loan Advisory</option>
                     <option value="Business & MSME Loans">Business & MSME Loans</option>
@@ -1167,7 +1160,9 @@ const Home = () => {
                 </div>
 
                 <div className="wf-input-field wf-input-full">
-                  <label>Message (Optional)</label>
+                  <label>
+                    Message <span style={{ color: "#9CA3AF", fontWeight: "normal", fontSize: "12px" }}>(Optional)</span>
+                  </label>
                   <textarea
                     rows={3}
                     placeholder="Tell us about your requirement..."
@@ -1182,104 +1177,6 @@ const Home = () => {
                 </button>
               </form>
             )}
-          </div>
-        </Container>
-      </section>
-
-      {/* ----------------------------------------------------
-         6. RESOURCES & NEWS BANNER
-      ---------------------------------------------------- */}
-      <section className="wf-resources-section reveal-on-scroll">
-        <Container>
-          <div className="wf-resources-grid">
-            {/* Left: Resources List */}
-            <div className="reveal-on-scroll stagger-delay-1">
-              <span className="pill-tag">KNOWLEDGE HUB</span>
-              <div className="section-wireframe-title" style={{ marginBottom: "16px" }}>
-                <h2>Resources:</h2>
-              </div>
-
-              <div className="wf-resource-list">
-                <div
-                  className="wf-resource-item"
-                  onClick={() => handleOpenApply("Insurance Resource Guide")}
-                >
-                  <div className="wf-resource-bullet">⊙</div>
-                  <div className="wf-resource-info">
-                    <h4>Newsance - Health & Life Insurance</h4>
-                    <p>Latest policy updates, Tax benefits (Sec 80D), and cashless network hospitals.</p>
-                  </div>
-                </div>
-
-                <div
-                  className="wf-resource-item"
-                  onClick={() => handleOpenApply("Wealth Management Guide")}
-                >
-                  <div className="wf-resource-bullet">⊙</div>
-                  <div className="wf-resource-info">
-                    <h4>Wealth Management Insights</h4>
-                    <p>Investment strategies, SIP returns planner, and financial portfolio balancing.</p>
-                  </div>
-                </div>
-
-                <div
-                  className="wf-resource-item"
-                  onClick={() => {
-                    const elem = document.getElementById("contact");
-                    if (elem) elem.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <div className="wf-resource-bullet">⊙</div>
-                  <div className="wf-resource-info">
-                    <h4>Contact - us: Direct Support</h4>
-                    <p>24x7 client support helpline: +91 98706 43210 or email support@jankifinance.com</p>
-                  </div>
-                </div>
-
-                <div
-                  className="wf-resource-item"
-                  onClick={() => handleOpenApply("Financial Calculators")}
-                >
-                  <div className="wf-resource-bullet">⊙</div>
-                  <div className="wf-resource-info">
-                    <h4>Resources: EMI & Eligibility Tools</h4>
-                    <p>Free loan EMI calculators, interest comparison matrix & document checklists.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: News Banner Card */}
-            <div style={{ display: "flex", flexDirection: "column" }} className="reveal-on-scroll stagger-delay-2">
-              <div style={{ marginBottom: "16px" }}>
-                <span className="pill-tag">FEATURED READ</span>
-              </div>
-              <div className="wf-news-banner-card">
-                <div className="wf-news-img-box">
-                  <img
-                    src="/images/news_banner.png"
-                    alt="News Financial Insights"
-                  />
-                  <span className="wf-news-badge">MARKET INSIGHTS</span>
-                </div>
-                <div className="wf-news-content">
-                  <div>
-                    <h3>2026 Interest Rate Outlook & Insurance Planning</h3>
-                    <p>
-                      Discover how recent RBI rate policies affect home loan EMIs and how pairing loan insurance safeguards your family's future assets.
-                    </p>
-                  </div>
-                  <button
-                    className="wf-news-btn"
-                    onClick={() => handleOpenApply("2026 Interest Rate Article")}
-                  >
-                    <BookOpen size={16} />
-                    <span>Read Full Article</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </Container>
       </section>

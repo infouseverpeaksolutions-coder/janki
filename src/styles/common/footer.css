@@ -3,6 +3,7 @@
   color: #9CA3AF;
   padding: 70px 0 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px 40px 0 0;
 }
 
 .footer-top {
@@ -151,49 +152,57 @@
   flex-shrink: 0;
 }
 
-/* Footer Trust Pillars Bar (4 Icons & Text) */
+/* Standalone Trust Pillars Section (Outside & Above Footer) */
+.trust-pillars-section {
+  padding: 30px 0;
+  background: transparent;
+}
+
 .footer-trust-pillars {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 24px 20px;
-  margin-top: 36px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(13, 36, 71, 0.45);
-  border-radius: 16px;
+  padding: 14px 28px;
+  margin-bottom: 0;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: #0D2447;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(13, 36, 71, 0.12);
 }
 
 .trust-pillar-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 8px;
   flex: 1;
   text-align: center;
-  padding: 0 10px;
+  padding: 4px 10px;
 }
 
 .pillar-icon {
   color: #D4AF37;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .trust-pillar-item:hover .pillar-icon {
-  transform: translateY(-4px);
+  transform: scale(1.15);
 }
 
 .pillar-text {
   color: #D4AF37;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .pillar-divider {
   width: 1px;
-  height: 42px;
+  height: 20px;
   background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.4), transparent);
 }
 

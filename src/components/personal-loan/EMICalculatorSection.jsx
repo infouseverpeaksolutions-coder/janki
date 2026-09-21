@@ -67,7 +67,7 @@ const EMICalculatorSection = ({ onApplyWithParams }) => {
           {/* Left Form: Numeric Inputs */}
           <form onSubmit={handleCalculate} className="emi-left-card">
             <div className="emi-card-title-badge">
-              <Calculator size={22} className="emi-icon" />
+              <img src="/images/node_calculator.png" alt="EMI Calculator" className="emi-3d-badge-icon" style={{ width: 24, height: 24, objectFit: "contain" }} />
               <span>EMI Calculator</span>
             </div>
 

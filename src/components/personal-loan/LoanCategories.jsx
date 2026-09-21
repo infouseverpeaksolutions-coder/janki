@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Home, Car, User, Store, Landmark, ArrowRight, Check } from "lucide-react";
+import { useState, useRef } from "react";
+import { Home, Car, User, Store, Landmark, Coins, ArrowRight, Check, ChevronLeft, ChevronRight, ShieldCheck, TrendingUp } from "lucide-react";
 import Container from "../common/Container";
 
 const categories = [
   {
     id: "home-loan",
     icon: Home,
+    image: "/images/node_home_loan.png",
     title: "Home Loan",
     desc: "Make your dream home a reality",
     interest: "Starting @ 8.40% p.a."
@@ -13,6 +14,7 @@ const categories = [
   {
     id: "car-loan",
     icon: Car,
+    image: "/images/node_car_loan.png",
     title: "Car Loan",
     desc: "Drive your dream car today",
     interest: "Starting @ 8.75% p.a."
@@ -20,6 +22,7 @@ const categories = [
   {
     id: "personal-loan",
     icon: User,
+    image: "/images/node_personal_loan.png",
     title: "Personal Loan",
     desc: "Funds for your personal needs",
     interest: "Starting @ 10.50% p.a.",
@@ -28,6 +31,7 @@ const categories = [
   {
     id: "business-loan",
     icon: Store,
+    image: "/images/node_business_loan.png",
     title: "Business Loan",
     desc: "Grow your business",
     interest: "Starting @ 11.25% p.a."
@@ -35,25 +39,86 @@ const categories = [
   {
     id: "property-loan",
     icon: Landmark,
+    image: "/images/node_property_loan.png",
     title: "Loan Against Property",
     desc: "Unlock the value of your property",
     interest: "Starting @ 9.15% p.a."
+  },
+  {
+    id: "gold-loan",
+    icon: Coins,
+    image: "/images/node_gold_loan.png",
+    title: "Gold Loan",
+    desc: "Unlock instant value of your gold",
+    interest: "Starting @ 9.25% p.a."
   }
 ];
 
 const LoanCategories = ({ onSelectCategory, onOpenApply }) => {
   const [activeCategory, setActiveCategory] = useState("personal-loan");
+  const categoriesGridRef = useRef(null);
+
+  const scrollCategories = (direction) => {
+    if (categoriesGridRef.current) {
+      const firstCard = categoriesGridRef.current.querySelector(".category-card");
+      const cardWidth = firstCard ? firstCard.offsetWidth + 20 : 280;
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      categoriesGridRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const handleInsuranceClick = () => {
+    const elem = document.getElementById("insurance");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    } else if (onOpenApply) {
+      onOpenApply("Insurance");
+    }
+  };
+
+  const handleWealthClick = () => {
+    const elem = document.getElementById("wealth");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    } else if (onOpenApply) {
+      onOpenApply("Wealth Management");
+    }
+  };
 
   return (
     <section className="pl-categories-section" id="loan-categories">
       <Container>
-        <div className="section-header center reveal-on-scroll">
-          <span className="section-pill-tag">EXPLORE LOANS</span>
-          <h2>Tailored Financial Solutions For Every Need</h2>
-          <p>Select a loan category below to get instant quotes, interest rates, and customized offers.</p>
+        <div className="section-wireframe-title reveal-on-scroll">
+          <div>
+            <span className="section-pill-tag">EXPLORE LOANS</span>
+            <h2>Tailored Financial Solutions For Every Need</h2>
+            <p style={{ color: "#6B7280", fontSize: "15px", margin: "4px 0 0" }}>
+              Select a loan category below to get instant quotes, interest rates, and customized offers.
+            </p>
+          </div>
+          <div className="slider-nav-arrows">
+            <button
+              type="button"
+              className="slider-arrow-btn"
+              onClick={() => scrollCategories("left")}
+              aria-label="Previous category"
+              title="Previous"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              type="button"
+              className="slider-arrow-btn"
+              onClick={() => scrollCategories("right")}
+              aria-label="Next category"
+              title="Next"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
 
-        <div className="categories-grid">
+        <div className="categories-grid" ref={categoriesGridRef}>
           {categories.map((cat, idx) => {
             const Icon = cat.icon;
             const isActive = activeCategory === cat.id;
@@ -74,7 +139,11 @@ const LoanCategories = ({ onSelectCategory, onOpenApply }) => {
                 )}
 
                 <div className="cat-icon-box">
-                  <Icon size={26} className="cat-icon" />
+                  {cat.image ? (
+                    <img src={cat.image} alt={cat.title} className="cat-3d-img" />
+                  ) : (
+                    <Icon size={26} className="cat-icon" />
+                  )}
                 </div>
 
                 <h3>{cat.title}</h3>
@@ -95,9 +164,38 @@ const LoanCategories = ({ onSelectCategory, onOpenApply }) => {
             );
           })}
         </div>
+
+        {/* Explore More Strip inside Tailored Financial Solutions section */}
+        <div className="explore-strip-card" style={{ marginTop: "32px" }}>
+          <div className="explore-strip-title">
+            <span>Explore More</span>
+            <ArrowRight size={18} className="strip-arrow" />
+          </div>
+
+          <div className="explore-strip-pills">
+            <button
+              type="button"
+              className="strip-pill-btn"
+              onClick={handleInsuranceClick}
+            >
+              <ShieldCheck size={16} />
+              <span>INSURANCE</span>
+            </button>
+
+            <button
+              type="button"
+              className="strip-pill-btn"
+              onClick={handleWealthClick}
+            >
+              <TrendingUp size={16} />
+              <span>WEALTH MANAGEMENT</span>
+            </button>
+          </div>
+        </div>
       </Container>
     </section>
   );
 };
 
 export default LoanCategories;
+
