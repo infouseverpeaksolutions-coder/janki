@@ -34,6 +34,45 @@ import { partnerBanksData } from "../components/common/BankLogo";
 import "../styles/home-wireframe.css";
 import "../styles/personal-loan.css";
 
+const INDIAN_STATES = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Andaman and Nicobar Islands",
+  "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi",
+  "Jammu and Kashmir",
+  "Ladakh",
+  "Lakshadweep",
+  "Puducherry"
+];
+
 const Home = () => {
   const [activeTab, setActiveTab] = useState("VISION");
   const [modalOpen, setModalOpen] = useState(false);
@@ -352,7 +391,6 @@ const Home = () => {
                       <LogoComp />
                     </div>
                     <span className="bank-name">{bank.name}</span>
-                    <span className="bank-roi">{bank.roi} ROI</span>
                   </div>
                 );
               })}
@@ -466,8 +504,9 @@ const Home = () => {
       </section>
 
       {/* ----------------------------------------------------
-         3. SERVICES : ADVISORY (6 Vertical Service Columns ① to ⑥)
+         3. SERVICES : ADVISORY (Commented out as requested)
       ---------------------------------------------------- */}
+      {/* 
       <section className="wf-services-section reveal-on-scroll" id="advisory">
         <Container>
           <div className="section-wireframe-title reveal-on-scroll">
@@ -498,7 +537,6 @@ const Home = () => {
           </div>
 
           <div className="wf-services-grid" ref={servicesGridRef}>
-            {/* ① Personal Loan Advisory */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-1">
               <div className="wf-service-icon">
                 <User size={24} />
@@ -513,7 +551,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* ② Business & MSME Loans */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-2">
               <div className="wf-service-icon">
                 <Building2 size={24} />
@@ -528,7 +565,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* ③ Home Loans & Balance Transfers */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-3">
               <div className="wf-service-icon">
                 <HomeIcon size={24} />
@@ -543,7 +579,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* ④ Loan Against Property (LAP) */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-4">
               <div className="wf-service-icon">
                 <Landmark size={24} />
@@ -558,7 +593,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* ⑤ Credit Card & Debt Structuring */}
             <div className="wf-service-col reveal-on-scroll stagger-delay-5">
               <div className="wf-service-icon">
                 <CreditCard size={24} />
@@ -573,7 +607,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* ⑥ Explore More Services (Advisory CTA) */}
             <div className="wf-service-col explore-service-col reveal-on-scroll stagger-delay-6">
               <div className="wf-service-icon explore-icon">
                 <Sparkles size={24} />
@@ -590,12 +623,14 @@ const Home = () => {
           </div>
         </Container>
       </section>
+      */}
 
       {/* ----------------------------------------------------
 
       {/* ----------------------------------------------------
-         4. LOAN & INSURANCE PRODUCTS (5 Box Cards + Explore More)
+         4. LOAN & INSURANCE PRODUCTS (Commented out as requested)
       ---------------------------------------------------- */}
+      {/* 
       <section className="wf-products-section reveal-on-scroll" id="loans">
         <Container>
           <div className="section-wireframe-title reveal-on-scroll">
@@ -610,7 +645,6 @@ const Home = () => {
           </div>
 
           <div className="wf-products-grid">
-            {/* Card 1 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-1">
               <div className="wf-card-header">
                 <h3>Loan Category</h3>
@@ -648,7 +682,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card 2 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-2" id="insurance">
               <div className="wf-card-header">
                 <h3>Insurance Portfolio</h3>
@@ -686,7 +719,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card 3 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-3">
               <div className="wf-card-header">
                 <h3>Loan & Wealth Shield</h3>
@@ -724,7 +756,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card 4 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-4">
               <div className="wf-card-header">
                 <h3>Loan Insurance</h3>
@@ -762,7 +793,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Card 5: Explore More Card */}
             <div className="wf-bracket-card explore-card-highlight reveal-on-scroll stagger-delay-5">
               <div className="explore-card-inner">
                 <div className="explore-sparkle-badge">
@@ -782,10 +812,12 @@ const Home = () => {
           </div>
         </Container>
       </section>
+      */}
 
       {/* ----------------------------------------------------
-         4.5 WEALTH MANAGEMENT SECTION (Cards + Explore More)
+         4.5 WEALTH MANAGEMENT SECTION (Commented out as requested)
       ---------------------------------------------------- */}
+      {/* 
       <section className="wf-wealth-section reveal-on-scroll" id="wealth">
         <Container>
           <div className="section-wireframe-title reveal-on-scroll">
@@ -800,7 +832,6 @@ const Home = () => {
           </div>
 
           <div className="wf-products-grid">
-            {/* Wealth Card 1 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-1">
               <div className="wf-card-header">
                 <h3>Mutual Funds & SIP</h3>
@@ -838,7 +869,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Wealth Card 2 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-2">
               <div className="wf-card-header">
                 <h3>Portfolio Management</h3>
@@ -876,7 +906,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Wealth Card 3 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-3">
               <div className="wf-card-header">
                 <h3>Fixed Income & Bonds</h3>
@@ -914,7 +943,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Wealth Card 4 */}
             <div className="wf-bracket-card reveal-on-scroll stagger-delay-4">
               <div className="wf-card-header">
                 <h3>Tax Saving & Security</h3>
@@ -952,7 +980,6 @@ const Home = () => {
               </button>
             </div>
 
-            {/* Wealth Card 5: Explore More Card */}
             <div className="wf-bracket-card explore-card-highlight reveal-on-scroll stagger-delay-5">
               <div className="explore-card-inner">
                 <div className="explore-sparkle-badge">
@@ -972,6 +999,7 @@ const Home = () => {
           </div>
         </Container>
       </section>
+      */}
 
       {/* ----------------------------------------------------
          4.1 HOW IT WORKS (Copied & Synced)
@@ -1121,13 +1149,18 @@ const Home = () => {
                   <label>
                     State <span style={{ color: "#EF4444" }}>*</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Enter your state"
+                  <select
                     value={contactForm.state}
                     onChange={(e) => setContactForm({ ...contactForm, state: e.target.value })}
                     required
-                  />
+                  >
+                    <option value="">Select your state</option>
+                    {INDIAN_STATES.map((st) => (
+                      <option key={st} value={st}>
+                        {st}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div className="wf-input-field">

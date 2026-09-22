@@ -15,7 +15,11 @@ import {
   Award,
   HelpCircle,
   Sparkles,
-  BookOpen
+  BookOpen,
+  MessageSquare,
+  Search,
+  Scale,
+  Lightbulb
 } from "lucide-react";
 
 import Container from "../components/common/Container";
@@ -257,37 +261,37 @@ const PersonalLoanAdvisory = () => {
             <div className="pla-steps-timeline">
               {/* Step 1 */}
               <div className="pla-step-node reveal-on-scroll stagger-delay-1">
-                <span className="pla-step-tag">STEP 1: APPLY</span>
-                <h4>TALK OUR ADVISOR</h4>
-                <p>Profile assessment & loan requirement mapping with our senior financial expert.</p>
+                <span className="pla-step-tag">01</span>
+                <h4>YOU TELL US</h4>
+                <p>Share your needs and goals</p>
               </div>
 
               {/* Step 2 */}
               <div className="pla-step-node reveal-on-scroll stagger-delay-2">
-                <span className="pla-step-tag">STEP 2: SUPPORT</span>
-                <h4>DOCUMENT SUBMISSION</h4>
-                <p>Seamless document submission & verification support to target bank.</p>
+                <span className="pla-step-tag">02</span>
+                <h4>WE ANALYZE</h4>
+                <p>We study your profile and requirements</p>
               </div>
 
               {/* Step 3 */}
               <div className="pla-step-node reveal-on-scroll stagger-delay-3">
-                <span className="pla-step-tag">STEP 3: VERIFICATION</span>
-                <h4>LENDER MATCHING</h4>
-                <p>Keep moving in our guidance with best ROI & maximum LCR lender matching.</p>
+                <span className="pla-step-tag">03</span>
+                <h4>WE COMPARE</h4>
+                <p>We compare options from 20+ trusted lenders</p>
               </div>
 
               {/* Step 4 */}
               <div className="pla-step-node reveal-on-scroll stagger-delay-4">
-                <span className="pla-step-tag">STEP 4: APPROVAL</span>
-                <h4>GET APPROVAL</h4>
-                <p>Fast-track bank sanction letter & approval verification.</p>
+                <span className="pla-step-tag">04</span>
+                <h4>WE RECOMMEND</h4>
+                <p>We suggest the best options for you</p>
               </div>
 
               {/* Step 5 */}
               <div className="pla-step-node reveal-on-scroll stagger-delay-5">
-                <span className="pla-step-tag">STEP 5: DISBURSAL</span>
-                <h4>RECEIVE YOUR FUNDS</h4>
-                <p>Direct bank account credit within 24 hours of approval.</p>
+                <span className="pla-step-tag">05</span>
+                <h4>YOU DECIDE</h4>
+                <p>You choose what suits you best</p>
               </div>
             </div>
           </div>

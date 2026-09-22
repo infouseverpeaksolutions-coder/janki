@@ -11,23 +11,49 @@ const Footer = () => {
         <Container>
           <div className="footer-trust-pillars">
             <div className="trust-pillar-item">
-              <ShieldCheck size={20} className="pillar-icon" />
-              <span className="pillar-text">TRUSTED</span>
+              <div className="pillar-icon-box">
+                <ShieldCheck size={20} className="pillar-icon" />
+              </div>
+              <div className="pillar-text-group">
+                <span className="pillar-title">100% TRUSTED</span>
+                <span className="pillar-sub">Verified Banking Network</span>
+              </div>
             </div>
+
             <div className="pillar-divider"></div>
+
             <div className="trust-pillar-item">
-              <Handshake size={20} className="pillar-icon" />
-              <span className="pillar-text">TRANSPARENT</span>
+              <div className="pillar-icon-box">
+                <Handshake size={20} className="pillar-icon" />
+              </div>
+              <div className="pillar-text-group">
+                <span className="pillar-title">TRANSPARENT</span>
+                <span className="pillar-sub">Zero Hidden Fees</span>
+              </div>
             </div>
+
             <div className="pillar-divider"></div>
+
             <div className="trust-pillar-item">
-              <Award size={20} className="pillar-icon" />
-              <span className="pillar-text">RELIABLE</span>
+              <div className="pillar-icon-box">
+                <Award size={20} className="pillar-icon" />
+              </div>
+              <div className="pillar-text-group">
+                <span className="pillar-title">RELIABLE</span>
+                <span className="pillar-sub">Senior Advisory Desk</span>
+              </div>
             </div>
+
             <div className="pillar-divider"></div>
+
             <div className="trust-pillar-item">
-              <Headphones size={20} className="pillar-icon" />
-              <span className="pillar-text">CUSTOMER FOCUSED</span>
+              <div className="pillar-icon-box">
+                <Headphones size={20} className="pillar-icon" />
+              </div>
+              <div className="pillar-text-group">
+                <span className="pillar-title">CUSTOMER FIRST</span>
+                <span className="pillar-sub">24/7 Dedicated Support</span>
+              </div>
             </div>
           </div>
         </Container>

@@ -4,6 +4,8 @@
   background-color: var(--background, #F8F9FB);
   color: var(--heading, #1F2937);
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .home-wireframe-page h1,
@@ -1842,6 +1844,84 @@
   .strategy-card-wrapper {
     padding: 36px 28px;
   }
+
+  .wf-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .wf-about-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .wf-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .wf-resources-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wf-hero-section {
+    padding: 30px 0 20px;
+  }
+
+  .hero-main-title {
+    font-size: 32px;
+    line-height: 1.22;
+    letter-spacing: -0.5px;
+  }
+
+  .wf-hero-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+
+  .hero-features-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .hero-feature-item {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+
+  .hero-trust-bar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wf-contact-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .advisory-cards-2x2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1853,5 +1933,76 @@
   }
   .fee-price {
     font-size: 34px;
+  }
+
+  .hero-main-title {
+    font-size: 26px;
+  }
+
+  .hero-features-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hero-orbit-container {
+    width: 100%;
+    max-width: 320px;
+    height: 320px;
+    margin: 0 auto;
+  }
+
+  .orbit-center-hub {
+    width: 130px;
+    height: 130px;
+  }
+
+  .hub-title {
+    font-size: 16px;
+  }
+
+  .hub-subtitle {
+    font-size: 8px;
+  }
+
+  .hub-motto {
+    font-size: 9px;
+  }
+
+  .orbit-node .node-card {
+    min-width: 115px;
+    max-width: 140px;
+    padding: 4px 8px;
+    gap: 6px;
+  }
+
+  .node-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .node-text h4 {
+    font-size: 9.5px;
+  }
+
+  .node-text p {
+    font-size: 8px;
+    display: none;
+  }
+
+  .hero-marquee-header {
+    padding-left: 12px;
+    padding-right: 10px;
+  }
+
+  .marquee-label {
+    font-size: 9.5px;
+  }
+
+  .marquee-bank-item {
+    padding: 5px 10px;
+  }
+
+  .bank-name {
+    font-size: 12px;
   }
 }
