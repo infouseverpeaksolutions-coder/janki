@@ -6,7 +6,7 @@ const categories = [
   {
     id: "home-loan",
     icon: Home,
-    image: "/images/node_home_loan.png",
+    image: "/images/house_loan.png",
     title: "Home Loan",
     desc: "Make your dream home a reality",
     interest: "Starting @ 8.40% p.a."
@@ -14,7 +14,7 @@ const categories = [
   {
     id: "car-loan",
     icon: Car,
-    image: "/images/node_car_loan.png",
+    image: "/images/car_loan.png",
     title: "Car Loan",
     desc: "Drive your dream car today",
     interest: "Starting @ 8.75% p.a."
@@ -22,7 +22,7 @@ const categories = [
   {
     id: "personal-loan",
     icon: User,
-    image: "/images/node_personal_loan.png",
+    image: "/images/personal_loan.png",
     title: "Personal Loan",
     desc: "Funds for your personal needs",
     interest: "Starting @ 10.50% p.a.",
@@ -31,7 +31,7 @@ const categories = [
   {
     id: "business-loan",
     icon: Store,
-    image: "/images/node_business_loan.png",
+    image: "/images/business_loan.png",
     title: "Business Loan",
     desc: "Grow your business",
     interest: "Starting @ 11.25% p.a."
@@ -39,7 +39,7 @@ const categories = [
   {
     id: "property-loan",
     icon: Landmark,
-    image: "/images/node_property_loan.png",
+    image: "/images/property_loan.png",
     title: "Loan Against Property",
     desc: "Unlock the value of your property",
     interest: "Starting @ 9.15% p.a."
@@ -47,7 +47,7 @@ const categories = [
   {
     id: "gold-loan",
     icon: Coins,
-    image: "/images/node_gold_loan.png",
+    image: "/images/gold_loan.png",
     title: "Gold Loan",
     desc: "Unlock instant value of your gold",
     interest: "Starting @ 9.25% p.a."

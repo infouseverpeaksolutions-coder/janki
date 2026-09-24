@@ -156,11 +156,9 @@ const Home = () => {
               </div>
 
               <h1 className="hero-main-title">
-                Your Goals.
+                Find the Right Loan.
                 <br />
-                <span className="gold-highlight">Our Advice.</span>
-                <br />
-                <span className="navy-highlight">The Right Loan.</span>
+                <span className="gold-highlight">With Expert Guidance.</span>
               </h1>
 
               <p className="wf-hero-desc">
@@ -278,7 +276,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/node_personal_loan.png" alt="Personal Loan" className="node-img" />
+                      <img src="/images/personal_loan.png" alt="Personal Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>PERSONAL LOAN</h4>
@@ -295,7 +293,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/node_home_loan.png" alt="Home Loan" className="node-img" />
+                      <img src="/images/house_loan.png" alt="Home Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>HOME LOAN</h4>
@@ -312,7 +310,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/node_car_loan.png" alt="Car Loan" className="node-img" />
+                      <img src="/images/car_loan.png" alt="Car Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>CAR LOAN</h4>
@@ -329,7 +327,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/node_gold_loan.png" alt="Gold Loan" className="node-img" />
+                      <img src="/images/gold_loan.png" alt="Gold Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>GOLD LOAN</h4>
@@ -346,7 +344,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/node_property_loan.png" alt="Loan Against Property" className="node-img" />
+                      <img src="/images/property_loan.png" alt="Loan Against Property" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>LOAN AGAINST PROPERTY</h4>
@@ -363,7 +361,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/node_business_loan.png" alt="Business Loan" className="node-img" />
+                      <img src="/images/business_loan.png" alt="Business Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>BUSINESS LOAN</h4>
@@ -1012,6 +1010,11 @@ const Home = () => {
       <WhyChooseJanki />
 
       {/* ----------------------------------------------------
+         4.3 TESTIMONIALS SECTION
+      ---------------------------------------------------- */}
+      <TestimonialsSection />
+
+      {/* ----------------------------------------------------
          4.5 1-ON-1 STRATEGY SESSION BANNER
       ---------------------------------------------------- */}
       <section className="wf-strategy-section reveal-on-scroll">
@@ -1088,11 +1091,6 @@ const Home = () => {
          4.6 PLAN BETTER WITH OUR EMI CALCULATOR (Custom Inputs)
       ---------------------------------------------------- */}
       <EMICalculatorSection onApplyWithParams={handleOpenApply} />
-
-      {/* ----------------------------------------------------
-         4.7 TRUSTED BY THOUSANDS OF HAPPY CUSTOMERS
-      ---------------------------------------------------- */}
-      <TestimonialsSection />
 
       {/* ----------------------------------------------------
          4.8 FREQUENTLY ASKED QUESTIONS (2-Column Desktop Grid)
@@ -1197,7 +1195,7 @@ const Home = () => {
                     Message <span style={{ color: "#9CA3AF", fontWeight: "normal", fontSize: "12px" }}>(Optional)</span>
                   </label>
                   <textarea
-                    rows={3}
+                    rows={6}
                     placeholder="Tell us about your requirement..."
                     value={contactForm.message}
                     onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}

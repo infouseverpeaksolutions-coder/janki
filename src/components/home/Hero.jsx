@@ -19,7 +19,8 @@ const Hero = () => {
            
 
             <h1>
-              Your Trusted Partner For Every Loan Need
+              Find the Right Loan.<br />
+              With Expert Guidance.
             </h1>
 
             <p>
