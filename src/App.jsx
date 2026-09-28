@@ -23,7 +23,7 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<PersonalLoan />} />
+          <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/personal-loan" element={<PersonalLoan />} />
           <Route path="/personal-loan-advisory" element={<PersonalLoanAdvisory />} />

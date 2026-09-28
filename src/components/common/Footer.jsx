@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="footer-trust-pillars">
             <div className="trust-pillar-item">
               <div className="pillar-icon-box">
-                <ShieldCheck size={20} className="pillar-icon" />
+                <ShieldCheck size={18} className="pillar-icon" />
               </div>
               <div className="pillar-text-group">
                 <span className="pillar-title">100% TRUSTED</span>
@@ -24,7 +24,7 @@ const Footer = () => {
 
             <div className="trust-pillar-item">
               <div className="pillar-icon-box">
-                <Handshake size={20} className="pillar-icon" />
+                <Handshake size={18} className="pillar-icon" />
               </div>
               <div className="pillar-text-group">
                 <span className="pillar-title">TRANSPARENT</span>
@@ -36,7 +36,7 @@ const Footer = () => {
 
             <div className="trust-pillar-item">
               <div className="pillar-icon-box">
-                <Award size={20} className="pillar-icon" />
+                <Award size={18} className="pillar-icon" />
               </div>
               <div className="pillar-text-group">
                 <span className="pillar-title">RELIABLE</span>
@@ -48,7 +48,7 @@ const Footer = () => {
 
             <div className="trust-pillar-item">
               <div className="pillar-icon-box">
-                <Headphones size={20} className="pillar-icon" />
+                <Headphones size={18} className="pillar-icon" />
               </div>
               <div className="pillar-text-group">
                 <span className="pillar-title">CUSTOMER FIRST</span>

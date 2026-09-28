@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
-import { Home, Car, User, Store, Landmark, Coins, ArrowRight, Check, ChevronLeft, ChevronRight, ShieldCheck, TrendingUp } from "lucide-react";
+import { Home, Car, User, Store, Landmark, Coins, ArrowRight, Check, ChevronLeft, ChevronRight, ShieldCheck, TrendingUp, Calculator, HelpCircle } from "lucide-react";
 import Container from "../common/Container";
 
 const categories = [
   {
     id: "home-loan",
     icon: Home,
-    image: "/images/house_loan.png",
+    image: "/images/services/home-loan.png",
     title: "Home Loan",
     desc: "Make your dream home a reality",
     interest: "Starting @ 8.40% p.a."
@@ -22,7 +22,7 @@ const categories = [
   {
     id: "personal-loan",
     icon: User,
-    image: "/images/personal_loan.png",
+    image: "/images/services/personal-loan.png",
     title: "Personal Loan",
     desc: "Funds for your personal needs",
     interest: "Starting @ 10.50% p.a.",
@@ -31,7 +31,7 @@ const categories = [
   {
     id: "business-loan",
     icon: Store,
-    image: "/images/business_loan.png",
+    image: "/images/services/business-loan.png",
     title: "Business Loan",
     desc: "Grow your business",
     interest: "Starting @ 11.25% p.a."
@@ -39,7 +39,7 @@ const categories = [
   {
     id: "property-loan",
     icon: Landmark,
-    image: "/images/property_loan.png",
+    image: "/images/services/loan-against-property.png",
     title: "Loan Against Property",
     desc: "Unlock the value of your property",
     interest: "Starting @ 9.15% p.a."
@@ -47,7 +47,7 @@ const categories = [
   {
     id: "gold-loan",
     icon: Coins,
-    image: "/images/gold_loan.png",
+    image: "/images/services/gold-loan.png",
     title: "Gold Loan",
     desc: "Unlock instant value of your gold",
     interest: "Starting @ 9.25% p.a."
@@ -82,6 +82,24 @@ const LoanCategories = ({ onSelectCategory, onOpenApply }) => {
       elem.scrollIntoView({ behavior: "smooth" });
     } else if (onOpenApply) {
       onOpenApply("Wealth Management");
+    }
+  };
+
+  const handleEmiClick = () => {
+    const elem = document.getElementById("emi-calculator");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    } else if (onOpenApply) {
+      onOpenApply("EMI Calculator");
+    }
+  };
+
+  const handleAdvisoryClick = () => {
+    const elem = document.getElementById("advisory");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    } else if (onOpenApply) {
+      onOpenApply("Financial Advisory");
     }
   };
 
@@ -178,7 +196,6 @@ const LoanCategories = ({ onSelectCategory, onOpenApply }) => {
               className="strip-pill-btn"
               onClick={handleInsuranceClick}
             >
-              <ShieldCheck size={16} />
               <span>INSURANCE</span>
             </button>
 
@@ -187,7 +204,6 @@ const LoanCategories = ({ onSelectCategory, onOpenApply }) => {
               className="strip-pill-btn"
               onClick={handleWealthClick}
             >
-              <TrendingUp size={16} />
               <span>WEALTH MANAGEMENT</span>
             </button>
           </div>

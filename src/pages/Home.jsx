@@ -276,7 +276,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/personal_loan.png" alt="Personal Loan" className="node-img" />
+                      <img src="/images/services/personal-loan.png" alt="Personal Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>PERSONAL LOAN</h4>
@@ -293,7 +293,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/house_loan.png" alt="Home Loan" className="node-img" />
+                      <img src="/images/services/home-loan.png" alt="Home Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>HOME LOAN</h4>
@@ -327,7 +327,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/gold_loan.png" alt="Gold Loan" className="node-img" />
+                      <img src="/images/services/gold-loan.png" alt="Gold Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>GOLD LOAN</h4>
@@ -344,7 +344,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/property_loan.png" alt="Loan Against Property" className="node-img" />
+                      <img src="/images/services/loan-against-property.png" alt="Loan Against Property" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>LOAN AGAINST PROPERTY</h4>
@@ -361,7 +361,7 @@ const Home = () => {
                 >
                   <div className="node-card">
                     <div className="node-icon-wrapper">
-                      <img src="/images/business_loan.png" alt="Business Loan" className="node-img" />
+                      <img src="/images/services/business-loan.png" alt="Business Loan" className="node-img" />
                     </div>
                     <div className="node-text">
                       <h4>BUSINESS LOAN</h4>
@@ -382,11 +382,10 @@ const Home = () => {
           <div className="hero-marquee-scroll-container">
             <div className="hero-marquee-track">
               {[...partnerBanksData, ...partnerBanksData].map((bank, index) => {
-                const LogoComp = bank.Logo;
                 return (
                   <div key={`${bank.id}-${index}`} className="marquee-bank-item">
                     <div className="bank-logo-icon">
-                      <LogoComp />
+                      <img src={bank.logoImg} alt={`${bank.name} Logo`} className="bank-logo-img" />
                     </div>
                     <span className="bank-name">{bank.name}</span>
                   </div>
@@ -1103,17 +1102,17 @@ const Home = () => {
       <section className="wf-contact-section reveal-on-scroll" id="contact">
         <Container>
           <div className="wf-contact-card-box reveal-on-scroll">
-            <div className="section-wireframe-title" style={{ marginBottom: "12px" }}>
+            <div className="section-wireframe-title" style={{ marginBottom: "6px" }}>
               <h2>Contact- us :</h2>
             </div>
-            <p style={{ color: "#6B7280", fontSize: "15px", marginBottom: "24px" }}>
+            <p style={{ color: "#6B7280", fontSize: "14px", marginBottom: "14px" }}>
               Have questions about loan interest rates, eligibility, or insurance plans? Request a fast callback below.
             </p>
 
             {contactSubmitted ? (
-              <div style={{ background: "#ECFDF5", border: "1px solid #10B981", padding: "20px", borderRadius: "16px", color: "#065F46" }}>
-                <h4 style={{ fontSize: "18px", fontWeight: "700", marginBottom: "4px" }}>✓ Thank You! Your inquiry has been submitted.</h4>
-                <p style={{ fontSize: "14px", margin: 0 }}>Our financial consultant will reach out to you within 15 minutes.</p>
+              <div style={{ background: "#ECFDF5", border: "1px solid #10B981", padding: "16px 20px", borderRadius: "16px", color: "#065F46" }}>
+                <h4 style={{ fontSize: "16px", fontWeight: "700", marginBottom: "4px" }}>✓ Thank You! Your inquiry has been submitted.</h4>
+                <p style={{ fontSize: "13.5px", margin: 0 }}>Our financial consultant will reach out to you within 15 minutes.</p>
               </div>
             ) : (
               <form onSubmit={handleContactSubmit} className="wf-contact-form-grid">
@@ -1195,7 +1194,7 @@ const Home = () => {
                     Message <span style={{ color: "#9CA3AF", fontWeight: "normal", fontSize: "12px" }}>(Optional)</span>
                   </label>
                   <textarea
-                    rows={6}
+                    rows={2}
                     placeholder="Tell us about your requirement..."
                     value={contactForm.message}
                     onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}

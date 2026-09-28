@@ -3,14 +3,14 @@
   color: #9CA3AF;
   padding: 70px 0 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 40px 40px 0 0;
+  border-radius: 0;
 }
 
 .footer-top {
   display: grid;
   grid-template-columns: 1.4fr 0.9fr 0.9fr 0.9fr 1.1fr;
   gap: 40px;
-  padding-bottom: 50px;
+  padding-bottom: 22px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -154,7 +154,7 @@
 
 /* Standalone Trust Pillars Section (Outside & Above Footer) */
 .trust-pillars-section {
-  padding: 24px 0 40px;
+  padding: 12px 0 24px;
   background: transparent;
 }
 
@@ -162,26 +162,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 32px;
+  padding: 10px 24px;
   background: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 24px;
-  box-shadow: 0 12px 35px rgba(13, 36, 71, 0.06);
-  gap: 16px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 40px;
+  box-shadow: 0 8px 24px rgba(13, 36, 71, 0.05);
+  gap: 12px;
 }
 
 .trust-pillar-item {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   flex: 1;
-  padding: 4px 8px;
+  padding: 2px 4px;
 }
 
 .pillar-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: rgba(184, 134, 11, 0.08);
   border: 1px solid rgba(184, 134, 11, 0.2);
   display: flex;
@@ -213,9 +213,9 @@
 
 .pillar-title {
   color: #0D2447;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
@@ -223,13 +223,13 @@
   color: #6B7280;
   font-size: 11px;
   font-weight: 600;
-  margin-top: 2px;
+  margin-top: 1px;
   white-space: nowrap;
 }
 
 .pillar-divider {
   width: 1px;
-  height: 32px;
+  height: 22px;
   background: #E5E7EB;
   flex-shrink: 0;
 }
@@ -242,6 +242,15 @@
 }
 
 @media (max-width: 991px) {
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+
   .footer-trust-pillars {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -249,8 +258,41 @@
     padding: 20px 24px;
     border-radius: 20px;
   }
+
   .pillar-divider {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 14px;
+  }
+
+  .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .footer-links-col h4,
+  .footer-contact-col h4 {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .footer-links-col a,
+  .contact-item {
+    font-size: 12.5px;
+  }
+
+  .contact-item {
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .contact-item a,
+  .contact-item span {
+    word-break: break-word;
   }
 }
 
@@ -260,30 +302,18 @@
     gap: 16px 12px;
     padding: 16px 14px;
   }
+
   .pillar-icon-box {
     width: 36px;
     height: 36px;
   }
+
   .pillar-title {
     font-size: 11px;
   }
+
   .pillar-sub {
     font-size: 9.5px;
     white-space: normal;
-  }
-}
-
-@media (max-width: 640px) {
-  .footer-top {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 16px;
-  }
-
-  .footer-brand-col {
-    grid-column: 1 / -1;
-  }
-
-  .footer-contact-col {
-    grid-column: 1 / -1;
   }
 }

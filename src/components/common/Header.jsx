@@ -174,7 +174,7 @@ const Header = ({ onOpenApply }) => {
               >
                 <button
                   type="button"
-                  className="nav-link dropdown-btn"
+                  className={`nav-link dropdown-btn ${loansDropdownOpen ? "open" : ""}`}
                   onClick={() => scrollToSection("loans")}
                 >
                   Loans <ChevronDown size={14} className={`chevron ${loansDropdownOpen ? "rotate" : ""}`} />
@@ -228,27 +228,7 @@ const Header = ({ onOpenApply }) => {
                 )}
               </div>
 
-              {/* 6. Insurance */}
-              <button
-                type="button"
-                className="nav-link nav-btn-link"
-                onClick={() => scrollToSection("insurance")}
-                onMouseEnter={handleNavItemHover}
-              >
-                Insurance
-              </button>
-
-              {/* 7. Wealth Management */}
-              <button
-                type="button"
-                className="nav-link nav-btn-link"
-                onClick={() => scrollToSection("wealth")}
-                onMouseEnter={handleNavItemHover}
-              >
-                Wealth Management
-              </button>
-
-              {/* 8. More (with dropdown: EMI Calculator, Resources, Blog) */}
+              {/* 6. More (with dropdown: Insurance, Wealth Management, EMI Calculator, Resources, Blog) */}
               <div
                 className="nav-item-dropdown"
                 onMouseEnter={(e) => {
@@ -259,7 +239,7 @@ const Header = ({ onOpenApply }) => {
               >
                 <button
                   type="button"
-                  className="nav-link dropdown-btn"
+                  className={`nav-link dropdown-btn ${moreDropdownOpen ? "open" : ""}`}
                   onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
                 >
                   More <ChevronDown size={14} className={`chevron ${moreDropdownOpen ? "rotate" : ""}`} />
@@ -267,6 +247,26 @@ const Header = ({ onOpenApply }) => {
 
                 {moreDropdownOpen && (
                   <div className="dropdown-menu">
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => {
+                        closeMenus();
+                        scrollToSection("insurance");
+                      }}
+                    >
+                      Insurance
+                    </button>
+                    <button
+                      type="button"
+                      className="dropdown-item"
+                      onClick={() => {
+                        closeMenus();
+                        scrollToSection("wealth");
+                      }}
+                    >
+                      Wealth Management
+                    </button>
                     {/* Sub-dropdown for EMI Calculator & All Loan Solutions */}
                     <div
                       className="sub-dropdown-wrapper"
@@ -275,13 +275,13 @@ const Header = ({ onOpenApply }) => {
                     >
                       <button
                         type="button"
-                        className="dropdown-item has-sub-menu"
+                        className={`dropdown-item has-sub-menu ${emiSubDropdownOpen ? "active-sub" : ""}`}
                         onClick={() => {
                           setEmiSubDropdownOpen(!emiSubDropdownOpen);
                           scrollToSection("emi-calculator");
                         }}
                       >
-                        <span>EMI Calculator & Services</span>
+                        <span>EMI Calculator</span>
                         <ChevronRight size={14} className={`sub-chevron ${emiSubDropdownOpen ? "rotate-90" : ""}`} />
                       </button>
 
@@ -295,15 +295,12 @@ const Header = ({ onOpenApply }) => {
                               scrollToSection("emi-calculator");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_calculator.png" alt="EMI Calculator" className="sub-3d-img" />
-                            </div>
-                            <span>EMI Calculator (Main)</span>
+                            <span>EMI Calculator For</span>
+                            <ChevronDown size={14} className="sub-calc-chevron" />
                           </button>
 
                           <div className="sub-dropdown-divider"></div>
-                          <span className="sub-menu-header">TAILORED SOLUTIONS</span>
-
+                         
                           <button
                             type="button"
                             className="sub-dropdown-item"
@@ -313,9 +310,6 @@ const Header = ({ onOpenApply }) => {
                               else scrollToSection("loan-categories");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_home_loan.png" alt="Home Loan" className="sub-3d-img" />
-                            </div>
                             <span>Home Loan</span>
                           </button>
 
@@ -328,9 +322,6 @@ const Header = ({ onOpenApply }) => {
                               else scrollToSection("loan-categories");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_car_loan.png" alt="Car Loan" className="sub-3d-img" />
-                            </div>
                             <span>Car Loan</span>
                           </button>
 
@@ -343,9 +334,6 @@ const Header = ({ onOpenApply }) => {
                               else scrollToSection("loan-categories");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_personal_loan.png" alt="Personal Loan" className="sub-3d-img" />
-                            </div>
                             <span>Personal Loan</span>
                           </button>
 
@@ -358,9 +346,6 @@ const Header = ({ onOpenApply }) => {
                               else scrollToSection("loan-categories");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_business_loan.png" alt="Business Loan" className="sub-3d-img" />
-                            </div>
                             <span>Business Loan</span>
                           </button>
 
@@ -373,9 +358,6 @@ const Header = ({ onOpenApply }) => {
                               else scrollToSection("loan-categories");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_property_loan.png" alt="Loan Against Property" className="sub-3d-img" />
-                            </div>
                             <span>Loan Against Property</span>
                           </button>
 
@@ -388,9 +370,6 @@ const Header = ({ onOpenApply }) => {
                               else scrollToSection("loan-categories");
                             }}
                           >
-                            <div className="sub-item-icon-box">
-                              <img src="/images/node_gold_loan.png" alt="Gold Loan" className="sub-3d-img" />
-                            </div>
                             <span>Gold Loan</span>
                           </button>
                         </div>
@@ -443,9 +422,9 @@ const Header = ({ onOpenApply }) => {
                     scrollToSection("contact");
                   }
                 }}
-                onMouseEnter={handleNavItemHover}
+                onMouseEnter={handleNavMouseLeave}
               >
-                <MessageSquareText size={14} className="enquire-nav-icon" />
+                <MessageSquareText size={15} className="enquire-nav-icon" />
                 <span>Enquire</span>
               </button>
 
@@ -457,9 +436,9 @@ const Header = ({ onOpenApply }) => {
                   closeMenus();
                   setDonateModalOpen(true);
                 }}
-                onMouseEnter={handleNavItemHover}
+                onMouseEnter={handleNavMouseLeave}
               >
-                <Heart size={14} className="heart-nav-icon" />
+                <Heart size={15} className="heart-nav-icon" />
                 <span>Donate</span>
               </button>
 
