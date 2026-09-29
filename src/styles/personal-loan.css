@@ -534,10 +534,10 @@
 }
 
 /* ----------------------------------------------------
-   3. HOW IT WORKS
+   3. HOW IT WORKS (Modern Sleek Horizontal Stepper)
 ---------------------------------------------------- */
 .pl-how-it-works {
-  padding: 80px 0;
+  padding: 85px 0 95px;
   background: #F8F9FB;
   border-bottom: 1px solid #E5E7EB;
 }
@@ -547,60 +547,138 @@
   margin: 0 auto;
 }
 
+/* Horizontal Progress Bar Track */
+.steps-progress-track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 40px auto 44px;
+  padding: 0 20px;
+}
+
+.steps-progress-track::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: #E5E7EB;
+  transform: translateY(-50%);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.steps-progress-line-active {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  height: 3px;
+  background: linear-gradient(90deg, #0D2447 0%, #D4AF37 100%);
+  transform: translateY(-50%);
+  z-index: 2;
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-node {
+  position: relative;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #D1D5DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.progress-node .node-number {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6B7280;
+  transition: color 0.3s ease;
+}
+
+.progress-node:hover {
+  border-color: #D4AF37;
+  transform: scale(1.1);
+}
+
+.progress-node.node-active {
+  background: #0D2447;
+  border-color: #D4AF37;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.4);
+  transform: scale(1.12);
+}
+
+.progress-node.node-active .node-number {
+  color: #D4AF37;
+}
+
+/* Steps Grid */
 .steps-grid-5 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 28px;
-  margin-top: 48px;
+  gap: 16px;
   position: relative;
-  align-items: start;
-  padding-bottom: 50px;
+  align-items: stretch;
 }
 
-.hw-step-card {
+.step-card-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hw-step-card-modern {
+  width: 100%;
+  height: 100%;
   background: #FFFFFF;
   border: 1.5px solid #E5E7EB;
-  border-radius: 22px;
-  padding: 28px 20px 24px;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(13, 36, 71, 0.04);
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 6px 20px rgba(13, 36, 71, 0.03);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   cursor: pointer;
+  position: relative;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Alternate Staggered Placement (Up & Down Offset) */
-.hw-step-card.card-stagger-up {
-  margin-top: 0;
-}
-
-.hw-step-card.card-stagger-down {
-  margin-top: 52px;
-}
-
-.hw-step-card:hover {
+.hw-step-card-modern:hover,
+.hw-step-card-modern.card-active {
   transform: translateY(-8px);
-  border-color: #D4AF37;
-  box-shadow: 0 18px 40px rgba(212, 175, 55, 0.18);
+  border-color: rgba(212, 175, 55, 0.6);
+  background: #FFFFFF;
+  box-shadow: 0 16px 36px rgba(13, 36, 71, 0.08), 0 0 20px rgba(212, 175, 55, 0.12);
 }
 
-.hw-card-top {
+.hw-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.hw-icon-wrapper {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  background: rgba(184, 134, 11, 0.08);
-  border: 1px solid rgba(184, 134, 11, 0.2);
+.hw-icon-wrapper-modern {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #FFF8EA;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -608,107 +686,107 @@
   transition: all 0.3s ease;
 }
 
-.hw-step-card:hover .hw-icon-wrapper {
+.hw-step-card-modern:hover .hw-icon-wrapper-modern,
+.hw-step-card-modern.card-active .hw-icon-wrapper-modern {
   background: #0D2447;
-  color: #FFFFFF;
+  color: #D4AF37;
   border-color: #0D2447;
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
-.hw-step-number {
+.hw-step-badge {
   font-family: "Poppins", system-ui, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: #0D2447;
-  background: #F8F9FB;
-  padding: 4px 12px;
-  border-radius: 20px;
+  background: #F3F4F6;
+  padding: 4px 10px;
+  border-radius: 12px;
   letter-spacing: 0.5px;
-  border: 1px solid #E5E7EB;
 }
 
-.hw-step-card:hover .hw-step-number {
-  background: rgba(184, 134, 11, 0.12);
+.hw-step-card-modern:hover .hw-step-badge,
+.hw-step-card-modern.card-active .hw-step-badge {
+  background: rgba(212, 175, 55, 0.15);
   color: #B8860B;
-  border-color: rgba(184, 134, 11, 0.3);
 }
 
-.hw-step-card h3 {
-  font-size: 17px;
+.hw-step-card-modern h3 {
+  font-size: 16.5px;
   color: #0D2447;
   font-weight: 800;
   margin-bottom: 8px;
   line-height: 1.3;
 }
 
-.hw-step-card p {
+.hw-step-card-modern p {
   font-size: 13px;
   color: #6B7280;
-  line-height: 1.55;
-  margin: 0;
+  line-height: 1.5;
+  margin: 0 0 16px;
   flex: 1;
 }
 
-/* Playful Dotted SVG Arrow Connector Styles */
-.hw-card-bottom {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
+.hw-card-footer {
   margin-top: auto;
-  padding-top: 14px;
-}
-
-.steps-connectors-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 12;
-  overflow: visible;
-  filter: drop-shadow(0 2px 6px rgba(212, 175, 55, 0.25));
 }
 
-@media (max-width: 991px) {
-  .steps-connectors-overlay {
+.hw-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9CA3AF;
+  transition: color 0.3s ease;
+}
+
+.hw-step-card-modern:hover .hw-step-label,
+.hw-step-card-modern.card-active .hw-step-label {
+  color: #B8860B;
+}
+
+/* Connector Arrow between cards */
+.step-arrow-connector {
+  position: absolute;
+  right: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9CA3AF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Media Queries */
+@media (max-width: 1100px) {
+  .steps-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .step-arrow-connector {
+    display: none;
+  }
+  .steps-progress-track {
     display: none;
   }
 }
 
-@media (max-width: 1200px) {
-  .hw-dotted-connector {
-    width: 78px;
-    right: -44px;
-  }
-
-  .hw-dotted-connector.connector-down {
-    top: 24px;
-    height: 65px;
-  }
-
-  .hw-dotted-connector.connector-up {
-    bottom: 18px;
-    height: 70px;
-  }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .steps-grid-5 {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .hw-step-card.card-stagger-down {
-    margin-top: 0;
-  }
-
-  .hw-dotted-connector {
-    display: none;
+    gap: 16px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 500px) {
   .steps-grid-5 {
     grid-template-columns: 1fr;
   }

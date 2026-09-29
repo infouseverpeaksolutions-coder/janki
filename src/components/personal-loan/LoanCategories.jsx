@@ -6,7 +6,7 @@ const categories = [
   {
     id: "home-loan",
     icon: Home,
-    image: "/images/services/home-loan.png",
+    image: "/images/services/home-loan-city.png",
     title: "Home Loan",
     desc: "Make your dream home a reality",
     interest: "Starting @ 8.40% p.a."
@@ -39,7 +39,7 @@ const categories = [
   {
     id: "property-loan",
     icon: Landmark,
-    image: "/images/services/loan-against-property.png",
+    image: "/images/services/lap.png",
     title: "Loan Against Property",
     desc: "Unlock the value of your property",
     interest: "Starting @ 9.15% p.a."

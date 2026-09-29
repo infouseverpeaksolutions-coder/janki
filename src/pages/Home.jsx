@@ -1018,6 +1018,22 @@ const Home = () => {
       ---------------------------------------------------- */}
       <section className="wf-strategy-section reveal-on-scroll">
         <Container>
+          {/* Section Header above the Card */}
+          <div className="strategy-section-header">
+            <div className="strategy-header-badge">
+              <Sparkles size={14} className="badge-sparkle-icon" />
+              <span>TRY OUR NEW INITIATIVE • CLIENT'S MOST PREFERRED OPTION</span>
+            </div>
+            <h2 className="strategy-header-title">
+              Confused Which Loan Type Will Suit You Best?
+            </h2>
+            <p className="strategy-header-subtitle">
+              Take advantage of Janki's strategic guidance before starting your application. Speak directly with a senior strategist to analyze your profile and receive custom loan recommendations.
+
+
+            </p>
+          </div>
+
           <div className="strategy-card-wrapper">
             <div className="strategy-grid">
               {/* Left Content */}
