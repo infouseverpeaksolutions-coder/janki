@@ -195,19 +195,21 @@ const JankiAIWidget = ({ onOpenEligibility }) => {
       {/* 2. FLOATING VIDEO ASSISTANT (If Chat is closed) */}
       {!chatOpen && (
         <div className="janki-widget-floating-container is-entered">
-          {/* DISMISS CROSS ICON (X) */}
-          <button
-            type="button"
-            className="janki-widget-dismiss-x"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsDismissed(true);
-            }}
-            aria-label="Dismiss Janki AI Assistant"
-            title="Close / Dismiss Janki AI"
-          >
-            <X size={13} />
-          </button>
+          {/* DISMISS CROSS ICON (X) - Only appears AFTER video finishes playing */}
+          {speechStage > 0 && (
+            <button
+              type="button"
+              className="janki-widget-dismiss-x"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsDismissed(true);
+              }}
+              aria-label="Dismiss Janki AI Assistant"
+              title="Close / Dismiss Janki AI"
+            >
+              <X size={13} />
+            </button>
+          )}
 
           {/* MINIMIZED CIRCULAR BUTTON */}
           {bubbleClosed ? (

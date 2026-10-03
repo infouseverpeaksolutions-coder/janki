@@ -8,6 +8,7 @@
   z-index: 99999;
   bottom: 0;
   right: 0;
+  max-width: 100vw;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   pointer-events: none;
 }
@@ -867,27 +868,37 @@
   .janki-widget-floating-container {
     bottom: 0;
     right: 0;
+    max-width: 100vw;
   }
 
   .janki-floating-video-player {
-    max-height: 210px;
-    max-width: 165px;
+    max-height: 185px;
+    max-width: 140px;
   }
 
   .janki-speech-bubble {
     position: absolute;
-    right: 80px;
-    bottom: 125px;
-    max-width: 250px;
-    font-size: 11px;
-    padding: 6px 12px;
+    right: 84px;
+    bottom: 115px;
+    max-width: calc(100vw - 95px);
+    font-size: 10.5px;
+    padding: 6px 10px;
     white-space: nowrap;
     box-shadow: 0 8px 24px rgba(13, 36, 71, 0.2);
   }
 
+  .janki-bubble-arrow {
+    right: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 8px solid #FFFFFF;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
   .janki-widget-dismiss-x {
     top: -6px;
-    right: 8px;
+    right: 6px;
     width: 22px;
     height: 22px;
   }
