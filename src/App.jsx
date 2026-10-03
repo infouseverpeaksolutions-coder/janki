@@ -13,6 +13,7 @@ import Apply from "./pages/Apply";
 import Dashboard from "./pages/Dashboard";
 import Success from "./pages/Success";
 import EligibilityModal from "./components/personal-loan/EligibilityModal";
+import JankiAIWidget from "./components/JankiAI/JankiAIWidget";
 
 function App() {
   const [globalModalOpen, setGlobalModalOpen] = useState(false);
@@ -41,6 +42,8 @@ function App() {
         isOpen={globalModalOpen}
         onClose={() => setGlobalModalOpen(false)}
       />
+
+      <JankiAIWidget onOpenEligibility={() => setGlobalModalOpen(true)} />
     </>
   );
 }
